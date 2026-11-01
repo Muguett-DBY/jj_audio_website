@@ -1406,15 +1406,21 @@ def _write_harmony_sum(
     artifacts: dict[str, Any],
     source_path: str | Path,
 ) -> tuple[Path | None, str]:
-    """Sum guitar+piano+other. Bass stays out of the template chroma."""
+    """Sum guitar+piano for the chord stage. Bass and ``other`` stay out.
+
+    ``other`` densifies 12-bin chroma on distorted mixes (docs/chord-recognition/08
+    FM5); bass is slash-only via ``bass_path``. Kind is ``guitar_piano_sum`` when
+    both stems contribute, else ``guitar_sum``.
+    """
     import numpy as np
     import soundfile as sf
 
     guitar = _first_existing_artifact(artifacts, ("guitar",))
     if guitar is None:
         return None, ""
-    names = ("guitar", "piano", "other")
+    names = ("guitar", "piano")
     pieces: list[Any] = []
+    used: list[str] = []
     sample_rate = 0
     for name in names:
         path = _first_existing_artifact(artifacts, (name,))
@@ -1431,6 +1437,7 @@ def _write_harmony_sum(
 
             mono = librosa.resample(mono, orig_sr=sr, target_sr=sample_rate)
         pieces.append(mono)
+        used.append(name)
     if not pieces or sample_rate <= 0:
         return None, ""
     length = max(int(piece.size) for piece in pieces)
@@ -1458,7 +1465,8 @@ def _write_harmony_sum(
         stacked *= 0.99 / peak
     dest = guitar.parent / "harmony_sum.wav"
     sf.write(str(dest), stacked.astype(np.float32), sample_rate, subtype="PCM_16")
-    return dest, "stem_sum"
+    kind = "guitar_piano_sum" if "piano" in used else "guitar_sum"
+    return dest, kind
 
 
 def _analysis_sources(
@@ -1467,8 +1475,8 @@ def _analysis_sources(
 ) -> tuple[Path | None, Path | None, Path | None, str | None]:
     """Pick harmony/vocals/metronome inputs without assuming a stem set.
 
-    Priority is stem sum (guitar+piano+other), then ``no_vocals``, then
-    ``other``, then the full mix. Bass is not part of the sum.
+    Priority is guitar(+piano) sum, then ``no_vocals``, then ``other``, then the
+    full mix. Bass is not part of the sum.
     """
     vocals = _first_existing_artifact(artifacts, ("vocals",))
     metronome = artifacts.get("metronome_diagnostics")

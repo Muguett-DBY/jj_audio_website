@@ -1011,10 +1011,13 @@ def test_mixer_count_in_holds_the_transport_at_the_loop_start():
     assert "Math.ceil(remaining / (60 / bpm) - 0.05)" in main
 
 
-def test_mixer_labels_template_chords_as_a_draft():
+def test_mixer_labels_chord_chart_as_a_demo():
     main = _mixer_main_ts()
-    assert "Draft chords — a starting point; verify by ear." in main
-    assert "chords.every((chord) => !(Number(chord.confidence) > 0))" in main
+    assert (
+        "Demo — chord chart is a work in progress; roots can drift on dense mixes — verify by ear."
+        in main
+    )
+    assert "Draft chords — a starting point; verify by ear." not in main
     css = _mixer_src("style.css")
     assert ".practice-note {" in css
 

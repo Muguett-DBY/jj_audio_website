@@ -517,10 +517,23 @@ def analyze_audio(
     try:
         from audio_to_tab.chords import detect_chords
 
+        chord_model_dir = None
+        try:
+            from audio_to_tab.chord_neural import (
+                chord_model_requested,
+                default_chord_model_dir,
+            )
+
+            if chord_model_requested():
+                chord_model_dir = default_chord_model_dir()
+        except Exception:
+            chord_model_dir = None
+
         chords = detect_chords(
             harmony,
             beats=grid.beats,
             bpm=grid.bpm,
+            model_dir=chord_model_dir,
             provisional_key=provisional,
             beats_per_measure=grid.beats_per_measure,
             downbeats=grid.downbeats,

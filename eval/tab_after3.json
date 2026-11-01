@@ -1,0 +1,130 @@
+{
+  "label": "after3",
+  "generated_at": "2026-10-26T00:10:07+00:00",
+  "fixtures_dir": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab",
+  "cases": {
+    "clean_line": {
+      "category": "monophonic",
+      "wav": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/clean_line.wav",
+      "reference_midi": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/clean_line.mid",
+      "reference_notes": 12,
+      "separate_stems": false,
+      "artifacts_dir": "/var/folders/j3/dppqlrjj7rg46qm2rf_wx6c80000gq/T/att-eval/after3/clean_line",
+      "tempo": {
+        "estimated_bpm": 99.0,
+        "reference_bpm": 100.0,
+        "ratio": 0.99
+      },
+      "playability": {
+        "tab_notes": 12,
+        "ref_notes": 12,
+        "coverage": 1.0,
+        "fret_limit": 15,
+        "out_of_range": 0,
+        "duplicate_strings": 0,
+        "max_span": 0,
+        "wide_events": 0,
+        "position_jumps": 0,
+        "open_notes": 2
+      },
+      "transcription": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ref_notes": 12,
+        "est_notes": 12,
+        "note_ratio": 1.0
+      }
+    },
+    "chord_progression": {
+      "category": "polyphonic-strummed",
+      "wav": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/chord_progression.wav",
+      "reference_midi": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/chord_progression.mid",
+      "reference_notes": 42,
+      "separate_stems": false,
+      "artifacts_dir": "/var/folders/j3/dppqlrjj7rg46qm2rf_wx6c80000gq/T/att-eval/after3/chord_progression",
+      "tempo": {
+        "estimated_bpm": 180.0,
+        "reference_bpm": 90.0,
+        "ratio": 2.0
+      },
+      "playability": {
+        "tab_notes": 25,
+        "ref_notes": 42,
+        "coverage": 0.5952380952380952,
+        "fret_limit": 15,
+        "out_of_range": 0,
+        "duplicate_strings": 0,
+        "max_span": 2,
+        "wide_events": 0,
+        "position_jumps": 0,
+        "open_notes": 10
+      },
+      "transcription": {
+        "precision": 0.52,
+        "recall": 0.30952380952380953,
+        "f1": 0.3880597014925373,
+        "ref_notes": 42,
+        "est_notes": 25,
+        "note_ratio": 0.595
+      }
+    },
+    "mixed_band": {
+      "category": "full-mix",
+      "wav": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/mixed_band.wav",
+      "reference_midi": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/mixed_band.mid",
+      "reference_notes": 42,
+      "separate_stems": true,
+      "artifacts_dir": "/var/folders/j3/dppqlrjj7rg46qm2rf_wx6c80000gq/T/att-eval/after3/mixed_band",
+      "tempo": {
+        "estimated_bpm": 99.0,
+        "reference_bpm": 90.0,
+        "ratio": 1.1
+      },
+      "playability": {
+        "tab_notes": 22,
+        "ref_notes": 42,
+        "coverage": 0.5238095238095238,
+        "fret_limit": 15,
+        "out_of_range": 0,
+        "duplicate_strings": 0,
+        "max_span": 1,
+        "wide_events": 0,
+        "position_jumps": 0,
+        "open_notes": 10
+      },
+      "transcription": {
+        "precision": 0.3181818181818182,
+        "recall": 0.16666666666666666,
+        "f1": 0.21874999999999997,
+        "ref_notes": 42,
+        "est_notes": 22,
+        "note_ratio": 0.524
+      }
+    },
+    "real_guitar_el_noi_30s": {
+      "category": "real-recording",
+      "wav": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/eval/fixtures/audio_to_tab/real_guitar_el_noi_30s.wav",
+      "reference_midi": null,
+      "reference_notes": null,
+      "separate_stems": false,
+      "artifacts_dir": "/var/folders/j3/dppqlrjj7rg46qm2rf_wx6c80000gq/T/att-eval/after3/real_guitar_el_noi_30s",
+      "tempo": {
+        "estimated_bpm": 152.0,
+        "reference_bpm": null
+      },
+      "playability": {
+        "tab_notes": 86,
+        "ref_notes": null,
+        "coverage": null,
+        "fret_limit": 15,
+        "out_of_range": 0,
+        "duplicate_strings": 0,
+        "max_span": 3,
+        "wide_events": 0,
+        "position_jumps": 0,
+        "open_notes": 18
+      }
+    }
+  }
+}

@@ -59,15 +59,42 @@ def diatonic_fraction(events, key: str | None) -> float:
     return good / total if total else float("nan")
 
 
+def root_stability(events) -> dict:
+    roots = [split_symbol(event.symbol)[0] for event in events]
+    qualities = [split_symbol(event.symbol)[1] or "maj" for event in events]
+    total = max(1, len(roots))
+    first = roots[0] if roots else None
+    same = sum(1 for root in roots if root == first and first not in {None, "N"})
+    unique = {root for root in roots if root not in {None, "N"}}
+    return {
+        "fraction_root_equals_first": round(same / total, 4),
+        "n_unique_roots": len(unique),
+        "root_changes": sum(
+            1 for index in range(1, len(roots)) if roots[index] != roots[index - 1]
+        ),
+        "first_symbol": events[0].symbol if events else None,
+        "mMaj7_share": round(qualities.count("mMaj7") / total, 4),
+        "power_share": round(qualities.count("5") / total, 4),
+    }
+
+
 def summarise(name: str, events, key: str | None, bar_sec: float, duration: float):
     segs = len(events)
     quality = Counter(split_symbol(e.symbol)[1] or "maj" for e in events)
+    stability = root_stability(events)
     print(
         f"  {name:26s} segs={segs:4d} segs/bar={segs / max(duration / bar_sec, 1e-9):5.2f} "
         f"diatonic={diatonic_fraction(events, key):5.2f} "
+        f"root1={stability['fraction_root_equals_first']:.3f} "
+        f"roots={stability['n_unique_roots']} "
         f"vocab={dict(sorted(quality.items(), key=lambda kv: -kv[1]))}"
     )
-    return {"segs": segs, "diatonic": diatonic_fraction(events, key), "quality": dict(quality)}
+    return {
+        "segs": segs,
+        "diatonic": diatonic_fraction(events, key),
+        "quality": dict(quality),
+        "root_stability": stability,
+    }
 
 
 def mix_stems(paths: list[Path], out: Path, sr: int = 44100) -> Path | None:

@@ -1,0 +1,52 @@
+{
+  "after_power_prior_relax": {
+    "50f1": {
+      "n": 70,
+      "segs_per_bar": 0.821,
+      "maj7": 0.157,
+      "sus4": 0.014,
+      "power": 0.043,
+      "nondiat": 0.8,
+      "key": "D#m"
+    },
+    "9a18": {
+      "n": 232,
+      "segs_per_bar": 1.64,
+      "maj7": 0.543,
+      "sus4": 0.0,
+      "power": 0.0,
+      "nondiat": 0.22,
+      "key": "D#"
+    },
+    "ad6e": {
+      "n": 195,
+      "segs_per_bar": 1.746,
+      "maj7": 0.421,
+      "sus4": 0.0,
+      "power": 0.031,
+      "nondiat": 0.41,
+      "key": "Am"
+    },
+    "waltz": {
+      "n": 150,
+      "segs_per_bar": 2.732,
+      "maj7": 0.167,
+      "sus4": 0.007,
+      "power": 0.073,
+      "nondiat": 0.413,
+      "key": "Dm"
+    }
+  },
+  "before_maj7_from_after_metrics": {
+    "50f1": 0.174,
+    "9a18": 0.543,
+    "ad6e": 0.435
+  },
+  "after_distorted_lever": {
+    "shipped": false,
+    "reason": "Measured mid-band power preference and weak-seventh-vs-fifth refusal. 50f1 errors are mMaj7 with third~0.50 and maj7~0.79 of root, fifth the weak bin. Neither lever fires there. 9a18 maj7 has maj7/root~0.82, so preferring 5 would be wrong.",
+    "50f1_maj7": 0.157,
+    "50f1_power": 0.043,
+    "9a18_maj7": 0.543
+  }
+}

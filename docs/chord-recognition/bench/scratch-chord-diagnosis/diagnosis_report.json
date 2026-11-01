@@ -1,0 +1,3591 @@
+{
+  "held_gsharp_clean_key_None": {
+    "label": "held_gsharp_clean",
+    "path": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/docs/chord-recognition/bench/scratch-chord-diagnosis/gs_power_clean.wav",
+    "provisional_key": null,
+    "summary": {
+      "n": 1,
+      "symbols": [
+        "G#5"
+      ],
+      "root_counts": {
+        "G#": 1
+      },
+      "quality_counts": {
+        "5": 1
+      },
+      "root_changes": 0,
+      "same_root_quality_changes": 0,
+      "first": "G#5",
+      "unique_roots": [
+        "G#"
+      ]
+    },
+    "first_windows": [
+      {
+        "start": 0.0,
+        "end": 0.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "G#",
+            "z": 2.348,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.348
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.344,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.344
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.187,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.187
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.55,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.05
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.016,
+          "min3": 0.014,
+          "fifth": 0.615,
+          "maj7": 0.068,
+          "ninth": 0.021
+        }
+      },
+      {
+        "start": 0.5,
+        "end": 1.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.001,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.0,
+        "end": 1.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.5,
+        "end": 2.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 2.0,
+        "end": 2.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 2.5,
+        "end": 3.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.0,
+        "end": 3.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.5,
+        "end": 4.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 4.0,
+        "end": 4.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.368,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.368
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 4.5,
+        "end": 5.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 5.0,
+        "end": 5.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 5.5,
+        "end": 6.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.367
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          },
+          {
+            "symbol": "D#sus4",
+            "z": 2.546,
+            "q": 0.5,
+            "k": 0.0,
+            "final": 2.046
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      }
+    ]
+  },
+  "held_gsharp_clean_key_Gsm": {
+    "label": "held_gsharp_clean_Gsm",
+    "path": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/docs/chord-recognition/bench/scratch-chord-diagnosis/gs_power_clean.wav",
+    "provisional_key": "G#m",
+    "summary": {
+      "n": 1,
+      "symbols": [
+        "G#5"
+      ],
+      "root_counts": {
+        "G#": 1
+      },
+      "quality_counts": {
+        "5": 1
+      },
+      "root_changes": 0,
+      "same_root_quality_changes": 0,
+      "first": "G#5",
+      "unique_roots": [
+        "G#"
+      ]
+    },
+    "first_windows": [
+      {
+        "start": 0.0,
+        "end": 0.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.344,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.544
+          },
+          {
+            "symbol": "G#",
+            "z": 2.348,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.348
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.182,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.232
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.187,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.187
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.016,
+          "min3": 0.014,
+          "fifth": 0.615,
+          "maj7": 0.068,
+          "ninth": 0.021
+        }
+      },
+      {
+        "start": 0.5,
+        "end": 1.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.174,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.224
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.001,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.0,
+        "end": 1.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.5,
+        "end": 2.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 2.0,
+        "end": 2.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 2.5,
+        "end": 3.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.0,
+        "end": 3.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.5,
+        "end": 4.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 4.0,
+        "end": 4.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.368,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.568
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 4.5,
+        "end": 5.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 5.0,
+        "end": 5.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 5.5,
+        "end": 6.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.146,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.096
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.367,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.567
+          },
+          {
+            "symbol": "G#",
+            "z": 2.366,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.366
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.175,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.225
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.173,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.173
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.597,
+          "maj7": 0.011,
+          "ninth": 0.001
+        }
+      }
+    ]
+  },
+  "held_gsharp_distort_key_Gsm": {
+    "label": "held_gsharp_distort",
+    "path": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/docs/chord-recognition/bench/scratch-chord-diagnosis/gs_power_distort.wav",
+    "provisional_key": "G#m",
+    "summary": {
+      "n": 1,
+      "symbols": [
+        "G#5"
+      ],
+      "root_counts": {
+        "G#": 1
+      },
+      "quality_counts": {
+        "5": 1
+      },
+      "root_changes": 0,
+      "same_root_quality_changes": 0,
+      "first": "G#5",
+      "unique_roots": [
+        "G#"
+      ]
+    },
+    "first_windows": [
+      {
+        "start": 0.0,
+        "end": 0.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.044,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 2.994
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.287,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.487
+          },
+          {
+            "symbol": "G#",
+            "z": 2.479,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.479
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.312,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.312
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.132,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.182
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.114,
+          "min3": 0.026,
+          "fifth": 0.555,
+          "maj7": 0.075,
+          "ninth": 0.025
+        }
+      },
+      {
+        "start": 0.5,
+        "end": 1.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.057,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.007
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.49,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.49
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.124,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.174
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.532,
+          "maj7": 0.017,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 1.0,
+        "end": 1.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.511
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 1.5,
+        "end": 2.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.511
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 2.0,
+        "end": 2.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 2.5,
+        "end": 3.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 3.0,
+        "end": 3.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 3.5,
+        "end": 4.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.511
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 4.0,
+        "end": 4.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 4.5,
+        "end": 5.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.097,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 5.0,
+        "end": 5.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.511
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 5.5,
+        "end": 6.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.008
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.51
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.489
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.293
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.175
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      }
+    ]
+  },
+  "held_gsharp_distort_key_C": {
+    "label": "held_gsharp_distort_C",
+    "path": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/docs/chord-recognition/bench/scratch-chord-diagnosis/gs_power_distort.wav",
+    "provisional_key": "C",
+    "summary": {
+      "n": 1,
+      "symbols": [
+        "G#5"
+      ],
+      "root_counts": {
+        "G#": 1
+      },
+      "quality_counts": {
+        "5": 1
+      },
+      "root_changes": 0,
+      "same_root_quality_changes": 0,
+      "first": "G#5",
+      "unique_roots": [
+        "G#"
+      ]
+    },
+    "first_windows": [
+      {
+        "start": 0.0,
+        "end": 0.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.044,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.894
+          },
+          {
+            "symbol": "G#",
+            "z": 2.479,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.379
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.312,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.212
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.287,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.187
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.132,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.882
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.114,
+          "min3": 0.026,
+          "fifth": 0.555,
+          "maj7": 0.075,
+          "ninth": 0.025
+        }
+      },
+      {
+        "start": 0.5,
+        "end": 1.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.057,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.907
+          },
+          {
+            "symbol": "G#",
+            "z": 2.49,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.39
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.124,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.874
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.532,
+          "maj7": 0.017,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 1.0,
+        "end": 1.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.211
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 1.5,
+        "end": 2.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.211
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 2.0,
+        "end": 2.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 2.5,
+        "end": 3.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 3.0,
+        "end": 3.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 3.5,
+        "end": 4.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.211
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 4.0,
+        "end": 4.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 4.5,
+        "end": 5.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.097,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 5.0,
+        "end": 5.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.311,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.211
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      },
+      {
+        "start": 5.5,
+        "end": 6.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.058,
+            "q": 0.05,
+            "k": 0.1,
+            "final": 2.908
+          },
+          {
+            "symbol": "G#",
+            "z": 2.489,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.389
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.31,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.21
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.293,
+            "q": 0.0,
+            "k": 0.1,
+            "final": 2.193
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.125,
+            "q": 0.15,
+            "k": 0.1,
+            "final": 1.875
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.098,
+          "min3": 0.012,
+          "fifth": 0.531,
+          "maj7": 0.018,
+          "ninth": 0.004
+        }
+      }
+    ]
+  },
+  "progression_powers": {
+    "label": "prog_powers",
+    "path": "/Users/JJ/Documents/- PERSONAL PROJECTS GITHUB -/jj_audio_website/docs/chord-recognition/bench/scratch-chord-diagnosis/gs_as_cs_power_prog.wav",
+    "provisional_key": "G#m",
+    "summary": {
+      "n": 4,
+      "symbols": [
+        "G#5",
+        "A#5",
+        "C#5",
+        "G#5"
+      ],
+      "root_counts": {
+        "G#": 2,
+        "A#": 1,
+        "C#": 1
+      },
+      "quality_counts": {
+        "5": 4
+      },
+      "root_changes": 3,
+      "same_root_quality_changes": 0,
+      "first": "G#5",
+      "unique_roots": [
+        "A#",
+        "C#",
+        "G#"
+      ]
+    },
+    "first_windows": [
+      {
+        "start": 0.0,
+        "end": 0.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.126,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.076
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.339,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.539
+          },
+          {
+            "symbol": "G#",
+            "z": 2.342,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.342
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.181,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.231
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.184,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.184
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.016,
+          "min3": 0.014,
+          "fifth": 0.502,
+          "maj7": 0.067,
+          "ninth": 0.022
+        }
+      },
+      {
+        "start": 0.5,
+        "end": 1.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.361,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.561
+          },
+          {
+            "symbol": "G#",
+            "z": 2.36,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.36
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.169,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.219
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.169,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.169
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.001,
+          "min3": 0.001,
+          "fifth": 0.484,
+          "maj7": 0.009,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.0,
+        "end": 1.5,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.362,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.562
+          },
+          {
+            "symbol": "G#",
+            "z": 2.36,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.36
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.17,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.22
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.168,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.168
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.484,
+          "maj7": 0.009,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 1.5,
+        "end": 2.0,
+        "top": [
+          {
+            "symbol": "G#5",
+            "z": 3.115,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.065
+          },
+          {
+            "symbol": "G#m",
+            "z": 2.372,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.572
+          },
+          {
+            "symbol": "G#",
+            "z": 2.319,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.319
+          },
+          {
+            "symbol": "G#m7",
+            "z": 2.206,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.256
+          },
+          {
+            "symbol": "G#7",
+            "z": 2.156,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.156
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.008,
+          "min3": 0.032,
+          "fifth": 0.491,
+          "maj7": 0.055,
+          "ninth": 0.074
+        }
+      },
+      {
+        "start": 2.0,
+        "end": 2.5,
+        "top": [
+          {
+            "symbol": "A#5",
+            "z": 3.082,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.032
+          },
+          {
+            "symbol": "A#",
+            "z": 2.303,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.303
+          },
+          {
+            "symbol": "A#m",
+            "z": 2.277,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.277
+          },
+          {
+            "symbol": "A#7",
+            "z": 2.232,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.232
+          },
+          {
+            "symbol": "A#m7",
+            "z": 2.208,
+            "q": 0.15,
+            "k": 0.0,
+            "final": 2.058
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.017,
+          "min3": 0.006,
+          "fifth": 0.494,
+          "maj7": 0.054,
+          "ninth": 0.009
+        }
+      },
+      {
+        "start": 2.5,
+        "end": 3.0,
+        "top": [
+          {
+            "symbol": "A#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "A#",
+            "z": 2.361,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.361
+          },
+          {
+            "symbol": "A#m",
+            "z": 2.36,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.36
+          },
+          {
+            "symbol": "A#7",
+            "z": 2.169,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.169
+          },
+          {
+            "symbol": "A#m7",
+            "z": 2.169,
+            "q": 0.15,
+            "k": 0.0,
+            "final": 2.019
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.001,
+          "min3": 0.0,
+          "fifth": 0.483,
+          "maj7": 0.01,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.0,
+        "end": 3.5,
+        "top": [
+          {
+            "symbol": "A#5",
+            "z": 3.136,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.086
+          },
+          {
+            "symbol": "A#",
+            "z": 2.361,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.361
+          },
+          {
+            "symbol": "A#m",
+            "z": 2.36,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.36
+          },
+          {
+            "symbol": "A#7",
+            "z": 2.169,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.169
+          },
+          {
+            "symbol": "A#m7",
+            "z": 2.169,
+            "q": 0.15,
+            "k": 0.0,
+            "final": 2.019
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.001,
+          "min3": 0.0,
+          "fifth": 0.483,
+          "maj7": 0.01,
+          "ninth": 0.001
+        }
+      },
+      {
+        "start": 3.5,
+        "end": 4.0,
+        "top": [
+          {
+            "symbol": "A#5",
+            "z": 3.108,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.058
+          },
+          {
+            "symbol": "A#m",
+            "z": 2.402,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.402
+          },
+          {
+            "symbol": "A#",
+            "z": 2.341,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.341
+          },
+          {
+            "symbol": "A#7",
+            "z": 2.168,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.168
+          },
+          {
+            "symbol": "A#m7",
+            "z": 2.225,
+            "q": 0.15,
+            "k": 0.0,
+            "final": 2.075
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.014,
+          "min3": 0.041,
+          "fifth": 0.485,
+          "maj7": 0.037,
+          "ninth": 0.035
+        }
+      },
+      {
+        "start": 4.0,
+        "end": 4.5,
+        "top": [
+          {
+            "symbol": "C#5",
+            "z": 3.021,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 2.971
+          },
+          {
+            "symbol": "C#m",
+            "z": 2.255,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.455
+          },
+          {
+            "symbol": "C#",
+            "z": 2.315,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.315
+          },
+          {
+            "symbol": "C#7",
+            "z": 2.202,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.202
+          },
+          {
+            "symbol": "C#m7",
+            "z": 2.146,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.196
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.048,
+          "min3": 0.021,
+          "fifth": 0.498,
+          "maj7": 0.072,
+          "ninth": 0.011
+        }
+      },
+      {
+        "start": 4.5,
+        "end": 5.0,
+        "top": [
+          {
+            "symbol": "C#5",
+            "z": 3.137,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.087
+          },
+          {
+            "symbol": "C#m",
+            "z": 2.362,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.562
+          },
+          {
+            "symbol": "C#",
+            "z": 2.361,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.361
+          },
+          {
+            "symbol": "C#m7",
+            "z": 2.171,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.221
+          },
+          {
+            "symbol": "C#7",
+            "z": 2.17,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.17
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.483,
+          "maj7": 0.012,
+          "ninth": 0.0
+        }
+      },
+      {
+        "start": 5.0,
+        "end": 5.5,
+        "top": [
+          {
+            "symbol": "C#5",
+            "z": 3.137,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.087
+          },
+          {
+            "symbol": "C#m",
+            "z": 2.362,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.562
+          },
+          {
+            "symbol": "C#",
+            "z": 2.361,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.361
+          },
+          {
+            "symbol": "C#m7",
+            "z": 2.17,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.22
+          },
+          {
+            "symbol": "C#7",
+            "z": 2.169,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.169
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.0,
+          "min3": 0.001,
+          "fifth": 0.483,
+          "maj7": 0.012,
+          "ninth": 0.0
+        }
+      },
+      {
+        "start": 5.5,
+        "end": 6.0,
+        "top": [
+          {
+            "symbol": "C#5",
+            "z": 3.134,
+            "q": 0.05,
+            "k": 0.0,
+            "final": 3.084
+          },
+          {
+            "symbol": "C#m",
+            "z": 2.354,
+            "q": 0.0,
+            "k": -0.2,
+            "final": 2.554
+          },
+          {
+            "symbol": "C#",
+            "z": 2.35,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.35
+          },
+          {
+            "symbol": "C#m7",
+            "z": 2.168,
+            "q": 0.15,
+            "k": -0.2,
+            "final": 2.218
+          },
+          {
+            "symbol": "C#7",
+            "z": 2.164,
+            "q": 0.0,
+            "k": 0.0,
+            "final": 2.164
+          }
+        ],
+        "ratios_vs_winner_root": {
+          "maj3": 0.011,
+          "min3": 0.013,
+          "fifth": 0.561,
+          "maj7": 0.032,
+          "ninth": 0.019
+        }
+      }
+    ]
+  },
+  "real_50f1": {
+    "run": "50f1b1f5-2f38-41ea-8f2a-f31e63fddd29",
+    "stems": {
+      "current_mix.wav": {
+        "summary": {
+          "n": 70,
+          "symbols": [
+            "FmMaj7",
+            "D#maj7",
+            "G5/D",
+            "G5",
+            "F#mMaj7",
+            "D#maj7",
+            "Dsus4",
+            "FmMaj7",
+            "Dmaj7",
+            "G#mMaj7",
+            "A#mMaj7/C#",
+            "EmMaj7",
+            "A#7/D",
+            "G#mMaj7",
+            "A#mMaj7",
+            "G#mMaj7",
+            "A#mMaj7",
+            "A#mMaj7/C#",
+            "A#mMaj7",
+            "A#mMaj7/C#",
+            "EmMaj7",
+            "BmMaj7/D",
+            "AmMaj7",
+            "G#mMaj7",
+            "A#mMaj7",
+            "A#mMaj7/C#",
+            "D#maj7",
+            "A#mMaj7",
+            "A#m7",
+            "G#mMaj7",
+            "A#m7",
+            "A#7/D",
+            "G#m7",
+            "A#mMaj7/C#",
+            "G#mMaj7",
+            "G#sus2",
+            "A#mMaj7/C#",
+            "A#mMaj7",
+            "A#mMaj7/C#",
+            "EmMaj7",
+            "BmMaj7/D",
+            "AmMaj7",
+            "G#mMaj7",
+            "A#mMaj7/C#",
+            "EmMaj7",
+            "BmMaj7/D",
+            "G#mMaj7",
+            "A#m7",
+            "G#mMaj7",
+            "A#mMaj7",
+            "G#mMaj7",
+            "Bmaj7",
+            "D#maj7",
+            "F#maj7",
+            "A#mMaj7/C#",
+            "A#mMaj7",
+            "A#maj7",
+            "A#mMaj7",
+            "A#maj7",
+            "D#mMaj7",
+            "A#maj7",
+            "D#mMaj7",
+            "DmMaj7",
+            "Fm7",
+            "D#7",
+            "FmMaj7",
+            "G#mMaj7",
+            "A#maj7",
+            "E7",
+            "C#7"
+          ],
+          "root_counts": {
+            "F": 4,
+            "D#": 7,
+            "G": 2,
+            "F#": 2,
+            "D": 3,
+            "G#": 13,
+            "A#": 27,
+            "E": 5,
+            "B": 4,
+            "A": 2,
+            "C#": 1
+          },
+          "quality_counts": {
+            "mMaj7": 45,
+            "maj7": 11,
+            "5": 2,
+            "sus4": 1,
+            "7": 5,
+            "m7": 5,
+            "sus2": 1
+          },
+          "root_changes": 55,
+          "same_root_quality_changes": 6,
+          "first": "FmMaj7",
+          "unique_roots": [
+            "A",
+            "A#",
+            "B",
+            "C#",
+            "D",
+            "D#",
+            "E",
+            "F",
+            "F#",
+            "G",
+            "G#"
+          ]
+        },
+        "first_20": [
+          "FmMaj7",
+          "D#maj7",
+          "G5/D",
+          "G5",
+          "F#mMaj7",
+          "D#maj7",
+          "Dsus4",
+          "FmMaj7",
+          "Dmaj7",
+          "G#mMaj7",
+          "A#mMaj7/C#",
+          "EmMaj7",
+          "A#7/D",
+          "G#mMaj7",
+          "A#mMaj7",
+          "G#mMaj7",
+          "A#mMaj7",
+          "A#mMaj7/C#",
+          "A#mMaj7",
+          "A#mMaj7/C#"
+        ],
+        "fraction_root_equals_first": 0.057,
+        "n_unique_roots": 11
+      },
+      "guitar.wav": {
+        "summary": {
+          "n": 158,
+          "symbols": [
+            "Cm7",
+            "Asus4",
+            "D#7",
+            "G#maj7",
+            "EmMaj7",
+            "CmMaj7",
+            "CmMaj7/D#",
+            "EmMaj7",
+            "A#maj7",
+            "D#mMaj7",
+            "D#maj7",
+            "C5",
+            "D#maj7",
+            "C5",
+            "Cm7",
+            "Cmaj7",
+            "C7",
+            "Bmaj7",
+            "Bmaj7/D#",
+            "Bmaj7",
+            "Bmaj7/D#",
+            "Bmaj7",
+            "A#maj7",
+            "D#maj7",
+            "C5",
+            "Cm7",
+            "C5",
+            "C7",
+            "Bmaj7",
+            "Bmaj7/A#",
+            "Bmaj7",
+            "Bmaj7/D#",
+            "Bmaj7",
+            "D#maj7",
+            "Bmaj7",
+            "C5",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#maj7",
+            "F5",
+            "F#maj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "Gmaj7",
+            "A#maj7",
+            "Fmaj7",
+            "F#maj7",
+            "C7",
+            "D#maj7",
+            "Fmaj7",
+            "Gm7",
+            "CmMaj7",
+            "D#maj7",
+            "F7",
+            "Gm7",
+            "C7",
+            "D#maj7",
+            "Fmaj7",
+            "Gm7",
+            "Cmaj7",
+            "D#maj7",
+            "F5",
+            "Cm7",
+            "C7",
+            "CmMaj7",
+            "A#maj7",
+            "A#maj7/A",
+            "A#maj7",
+            "C5",
+            "D#maj7",
+            "C5",
+            "D#maj7",
+            "C5",
+            "D#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "A#maj7",
+            "Bmaj7",
+            "Bmaj7/D#",
+            "Bmaj7",
+            "D#maj7",
+            "Bmaj7",
+            "Cmaj7",
+            "D#maj7",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#maj7",
+            "F5",
+            "F#maj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "Cmaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "F7",
+            "Gm7",
+            "Fmaj7",
+            "Cm7",
+            "Cm7/D#",
+            "F7",
+            "G7",
+            "Cm7",
+            "F7",
+            "A#7/F",
+            "A#7",
+            "C7",
+            "N",
+            "C7",
+            "C7/A#",
+            "C7",
+            "Cmaj7",
+            "CmMaj7",
+            "Cmaj7",
+            "C7",
+            "Cmaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#5",
+            "Fmaj7",
+            "F#maj7",
+            "Cm7",
+            "Cm7/D#",
+            "Fmaj7",
+            "CmMaj7",
+            "F7",
+            "F#maj7",
+            "Cm7",
+            "F7",
+            "Cm7",
+            "F#maj7/A#",
+            "F#maj7",
+            "Cm7",
+            "F7",
+            "C7",
+            "Fmaj7",
+            "Cmaj7",
+            "Dm7",
+            "Am7",
+            "AmMaj7",
+            "F#maj7",
+            "Fmaj7",
+            "Bmaj7"
+          ],
+          "root_counts": {
+            "C": 53,
+            "A": 3,
+            "D#": 26,
+            "G#": 1,
+            "E": 2,
+            "A#": 9,
+            "B": 16,
+            "F": 25,
+            "F#": 15,
+            "G": 6,
+            "null": 1,
+            "D": 1
+          },
+          "quality_counts": {
+            "m7": 18,
+            "sus4": 1,
+            "7": 22,
+            "maj7": 75,
+            "mMaj7": 12,
+            "5": 29,
+            "maj": 1
+          },
+          "root_changes": 123,
+          "same_root_quality_changes": 15,
+          "first": "Cm7",
+          "unique_roots": [
+            "A",
+            "A#",
+            "B",
+            "C",
+            "D",
+            "D#",
+            "E",
+            "F",
+            "F#",
+            "G",
+            "G#"
+          ]
+        },
+        "first_20": [
+          "Cm7",
+          "Asus4",
+          "D#7",
+          "G#maj7",
+          "EmMaj7",
+          "CmMaj7",
+          "CmMaj7/D#",
+          "EmMaj7",
+          "A#maj7",
+          "D#mMaj7",
+          "D#maj7",
+          "C5",
+          "D#maj7",
+          "C5",
+          "Cm7",
+          "Cmaj7",
+          "C7",
+          "Bmaj7",
+          "Bmaj7/D#",
+          "Bmaj7"
+        ],
+        "fraction_root_equals_first": 0.335,
+        "n_unique_roots": 11
+      },
+      "rhythm_guitar.wav": {
+        "summary": {
+          "n": 137,
+          "symbols": [
+            "Cm7",
+            "D#maj7",
+            "G#maj7",
+            "EmMaj7",
+            "D#maj7",
+            "Bmaj7",
+            "A#maj7",
+            "Bmaj7",
+            "C5",
+            "CmMaj7",
+            "D#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "Cmaj7",
+            "Bmaj7",
+            "Bmaj7/A#",
+            "Bmaj7",
+            "A#maj7",
+            "C5",
+            "CmMaj7",
+            "D#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "C5",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#maj7",
+            "F5",
+            "F#mMaj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "Fmaj7",
+            "A#7",
+            "Cmaj7",
+            "D#maj7",
+            "F7",
+            "Gm7",
+            "Cmaj7",
+            "D#maj7",
+            "Fmaj7",
+            "A#7",
+            "Cm7",
+            "Cm7/A#",
+            "Fmaj7",
+            "Cm7",
+            "CmMaj7",
+            "A#maj7",
+            "CmMaj7",
+            "D#maj7",
+            "Cmaj7",
+            "D#maj7",
+            "A#maj7",
+            "D#maj7",
+            "C5",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#maj7",
+            "F5",
+            "F#mMaj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "CmMaj7",
+            "D#5",
+            "F7",
+            "F#maj7",
+            "Cm7",
+            "Cm7/A#",
+            "Fmaj7",
+            "C7",
+            "Cm7",
+            "Cm7/A#",
+            "Cm7",
+            "FmMaj7",
+            "Cm7",
+            "F7",
+            "C7",
+            "C7/A#",
+            "C7",
+            "N",
+            "Cm7",
+            "Cm7/G",
+            "Cm7",
+            "CmMaj7",
+            "Cmaj7",
+            "CmMaj7",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#5",
+            "F5",
+            "F#maj7",
+            "C5",
+            "D#5",
+            "Fmaj7",
+            "F#maj7",
+            "CmMaj7",
+            "D#maj7",
+            "F7",
+            "F#maj7",
+            "Cm7",
+            "Cm7/A#",
+            "F7",
+            "CmMaj7",
+            "F7",
+            "F#maj7",
+            "Cm7",
+            "F7",
+            "G#maj7",
+            "AmMaj7",
+            "FmMaj7",
+            "C7",
+            "AmMaj7",
+            "Cmaj7",
+            "A#maj7",
+            "Am7",
+            "F#7",
+            "AmMaj7",
+            "F#maj7",
+            "Fmaj7",
+            "Bmaj7"
+          ],
+          "root_counts": {
+            "C": 51,
+            "D#": 25,
+            "G#": 2,
+            "E": 1,
+            "B": 6,
+            "A#": 7,
+            "F": 24,
+            "F#": 15,
+            "G": 1,
+            "null": 1,
+            "A": 4
+          },
+          "quality_counts": {
+            "m7": 18,
+            "maj7": 57,
+            "mMaj7": 20,
+            "5": 26,
+            "7": 15,
+            "maj": 1
+          },
+          "root_changes": 118,
+          "same_root_quality_changes": 7,
+          "first": "Cm7",
+          "unique_roots": [
+            "A",
+            "A#",
+            "B",
+            "C",
+            "D#",
+            "E",
+            "F",
+            "F#",
+            "G",
+            "G#"
+          ]
+        },
+        "first_20": [
+          "Cm7",
+          "D#maj7",
+          "G#maj7",
+          "EmMaj7",
+          "D#maj7",
+          "Bmaj7",
+          "A#maj7",
+          "Bmaj7",
+          "C5",
+          "CmMaj7",
+          "D#maj7",
+          "Cmaj7",
+          "D#maj7",
+          "Cmaj7",
+          "Bmaj7",
+          "Bmaj7/A#",
+          "Bmaj7",
+          "A#maj7",
+          "C5",
+          "CmMaj7"
+        ],
+        "fraction_root_equals_first": 0.372,
+        "n_unique_roots": 10
+      }
+    }
+  },
+  "note_on_add9": "DETECTED_QUALITIES has no add9; chart-level symbols cannot emit Cmaj7add9. User-facing 'add9' is either a misremembered maj7/sus2/9-like label or a different product surface."
+}

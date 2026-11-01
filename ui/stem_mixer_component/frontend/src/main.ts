@@ -77,7 +77,7 @@ let practiceSheetOpen: boolean | null = null;
 const chordSymbolEdits = new Map<number, string>();
 let chordEditKey = "";
 let capoFret = 0;
-let chordLevel: ChordLevel = "chart";
+let chordLevel: ChordLevel = "medium";
 let chordFollowIndex = 0;
 let chordActiveChip: HTMLElement | null = null;
 let chordUserScrollAt = 0;
@@ -2826,7 +2826,6 @@ function renderPracticePanel(): void {
             `</div>`
         )
         .join("");
-      const draftChords = chords.every((chord) => !(Number(chord.confidence) > 0));
       body.innerHTML =
         '<div class="chord-now">' +
         '<div class="chord-now-symbol" id="chord-now-symbol">—</div>' +
@@ -2855,9 +2854,7 @@ function renderPracticePanel(): void {
         "</div>" +
         "</div>" +
         `<div class="chord-strip" id="chord-strip">${chips}</div>` +
-        (draftChords
-          ? '<p class="practice-note">Draft chords — a starting point; verify by ear.</p>'
-          : "");
+        '<p class="practice-note">Demo — chord chart is a work in progress; roots can drift on dense mixes — verify by ear.</p>';
     }
   } else if (practicePanelTab === "sections") {
     body.innerHTML = sections.length

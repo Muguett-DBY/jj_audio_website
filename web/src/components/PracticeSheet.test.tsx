@@ -159,6 +159,15 @@ describe("practice sheet", () => {
     expect(scope.textContent).toContain("C");
   });
 
+  it("labels the chord chart as a demo work in progress", async () => {
+    const scope = await render(
+      <PracticeSheet analysis={analysis} currentTime={0.4} onSeek={() => {}} />
+    );
+    expect(scope.textContent).toContain(
+      "Demo — chord chart is a work in progress; roots can drift on dense mixes — verify by ear."
+    );
+  });
+
   it("draws the stored chord at capo 0", async () => {
     const scope = await render(
       <PracticeSheet analysis={analysis} currentTime={0.4} onSeek={() => {}} />

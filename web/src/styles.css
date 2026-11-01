@@ -828,6 +828,13 @@ button.danger,
   font-family: ui-monospace, monospace;
 }
 
+.practice-sheet .practice-note {
+  margin: 0.2rem 0 0;
+  padding-top: 0.35rem;
+  font-size: 0.76rem;
+  opacity: 0.72;
+}
+
 .practice-sheet .practice-empty {
   margin: 0;
 }

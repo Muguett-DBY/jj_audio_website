@@ -120,7 +120,9 @@ Shared engine. Import as `audio_to_tab`.
 - `audio_to_tab/analysis.py` — song analysis schema/cache/orchestrator (`AnalysisResult`, chord/section/lyric spans, optional `chart`, `analysis_cache_key`). `SCHEMA_VERSION` stays 1. Order: beats → provisional key → chords → key → sections → lyrics → chart.
 - `audio_to_tab/key.py` — Krumhansl provisional key (bass breaks relative-major ties) and a duration-weighted chord histogram.
 - `audio_to_tab/chord_symbols.py` — frozen `Chord` parse, render, transpose, capo shape, display level, chord tones.
-- `audio_to_tab/chords.py` — tuned HPSS CQT chroma, weighted templates, z-scored priors, beat-synchronous Viterbi. `confidence` is the softmax top-two gap.
+- `audio_to_tab/chords.py` — tuned HPSS CQT chroma, weighted templates, z-scored priors, beat-synchronous Viterbi. `confidence` is the softmax top-two gap. Optional `model_dir` / `ATT_CHORD_MODEL=1` opts into BTC.
+- `audio_to_tab/chord_neural.py` — SHA256-pinned BTC maj/min download + inference; template fallback when off/unavailable.
+- `audio_to_tab/btc/` — vendored MIT BTC model (jayg996/BTC-ISMIR19); weights not bundled.
 - `audio_to_tab/chart.py` — `ChartDocument` from an analysis and its beat grid. Continuation cells are empty.
 - `audio_to_tab/export_musicxml.py` — chart to a MusicXML 3.1 subset (harmony + lyrics), stdlib only.
 - `audio_to_tab/export_text.py` — chart to ChordPro-ish text.
@@ -203,8 +205,23 @@ Hosted SPA (Vite + React). Dev: `make web` (proxies API). Paths below are repo-r
 - `web/src/components/JobProgress.tsx` — job status display.
 - `web/src/components/ProcessingModeSelect.tsx` — auto/fast/balanced from capabilities API.
 - `web/src/components/ProcessingModeSelect.test.ts` — Vitest for processing-mode select.
+- `web/src/components/PracticeSheet.tsx` — practice sheets (chords/sections/lyrics/tab).
+- `web/src/components/PracticeSheet.test.tsx` — Vitest for practice sheet.
+- `web/src/components/ThemeSelector.tsx` — theme/accent color picker.
+- `web/src/components/ColorPicker.tsx` — custom accent color swatches.
+- `web/src/components/ColorSwatch.tsx` — individual color swatch component.
+- `web/src/components/CookieBanner.tsx` — cookie consent banner.
+- `web/src/components/SiteFooter.tsx` — page footer.
+- `web/src/components/StemMixer.layout.test.ts` — layout smoke test for StemMixer.
+- `web/src/mixer/analysis.ts` — chord/loop helpers (`clampLoop`, `formatChordSymbol`).
+- `web/src/mixer/analysis.test.ts` — Vitest for analysis helpers.
+- `web/src/mixer/pan.ts` — equal-power pan law (−100..100), copied from desktop.
+- `web/src/mixer/pan.test.ts` — Vitest for pan law.
+- `web/src/mixer/practice.ts` — practice rate/key management (SoundTouch).
+- `web/src/mixer/practice.test.ts` — Vitest for practice management.
 - `web/src/mixer/engine.ts` — Web Audio mix engine (same background-play / wake policy as desktop iframe; Media Session + `keepPlaying`).
 - `web/src/mixer/engine.test.ts` — mixer unit tests (incl. hide-while-playing does not soft-pause; `keepPlaying` / Media Session).
+- `web/src/theme/ThemeContext.tsx` — global theme/accent context for the SPA.
 
 ### `backend/`
 
@@ -267,7 +284,7 @@ Desktop freeze + installers. How-to: `DESKTOP.md`.
 - `test_mixer.py` — mix helpers, pan matrix/export (center bit-identical, hard left/right, mute).
 - `test_metronome.py` — adaptive metronome (curve helpers, vocal-intro pulse, steady-tempo regression, 48 kHz, talking-intro gate) + render/rebake / `bpm_curve` diagnostics.
 - `test_analysis.py`, `test_analysis_orchestrator.py` — analysis schema/cache and stage fallbacks.
-- `test_chords.py`, `test_chord_symbols.py`, `test_chord_bench.py`, `test_chart.py`, `test_export_musicxml.py`, `test_key.py`, `test_sections.py`, `test_lyrics.py` — per-stage analysis engines, the chord bench scorer, and chart export.
+- `test_chords.py`, `test_chord_symbols.py`, `test_chord_neural.py`, `test_chord_bench.py`, `test_chart.py`, `test_export_musicxml.py`, `test_key.py`, `test_sections.py`, `test_lyrics.py` — per-stage analysis engines, the chord bench scorer, and chart export.
 - `test_tab_generate.py` — tab document / measure spans.
 - `test_project.py` — `project.json` round-trip, clamping, write-on-change, seeding, artifact loading.
 - `test_home.py` — Home analysis line, Practice/Analyse actions, `analyse_existing_run`.

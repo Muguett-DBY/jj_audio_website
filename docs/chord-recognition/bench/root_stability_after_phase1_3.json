@@ -1,0 +1,126 @@
+{
+  "phase": "after_phase1_3_display_and_harmony_source",
+  "note": "Detector priors unchanged; metrics on existing audio. Harmony-source change applies to NEW analyses only.",
+  "runs": {
+    "50f1": {
+      "current_mix.wav": {
+        "n": 70,
+        "segs_per_bar": 0.821,
+        "maj7": 0.157,
+        "mMaj7": 0.643,
+        "power": 0.029,
+        "fraction_root_equals_first": 0.0571,
+        "n_unique_roots": 11,
+        "root_changes": 55,
+        "same_root_quality_changes": 6,
+        "first_symbol": "FmMaj7",
+        "mMaj7_share": 0.6429,
+        "power_share": 0.0286
+      },
+      "guitar.wav": {
+        "n": 158,
+        "segs_per_bar": 1.853,
+        "maj7": 0.475,
+        "mMaj7": 0.076,
+        "power": 0.184,
+        "fraction_root_equals_first": 0.3354,
+        "n_unique_roots": 11,
+        "root_changes": 123,
+        "same_root_quality_changes": 15,
+        "first_symbol": "Cm7",
+        "mMaj7_share": 0.0759,
+        "power_share": 0.1835
+      }
+    },
+    "9a18": {
+      "current_mix.wav": {
+        "n": 232,
+        "segs_per_bar": 1.64,
+        "maj7": 0.543,
+        "mMaj7": 0.116,
+        "power": 0.0,
+        "fraction_root_equals_first": 0.0603,
+        "n_unique_roots": 11,
+        "root_changes": 133,
+        "same_root_quality_changes": 1,
+        "first_symbol": "F#mMaj7",
+        "mMaj7_share": 0.1164,
+        "power_share": 0.0
+      },
+      "guitar.wav": {
+        "n": 286,
+        "segs_per_bar": 2.022,
+        "maj7": 0.469,
+        "mMaj7": 0.021,
+        "power": 0.024,
+        "fraction_root_equals_first": 0.035,
+        "n_unique_roots": 10,
+        "root_changes": 170,
+        "same_root_quality_changes": 15,
+        "first_symbol": "F#mMaj7",
+        "mMaj7_share": 0.021,
+        "power_share": 0.0245
+      }
+    },
+    "ad6e": {
+      "current_mix.wav": {
+        "n": 0,
+        "segs_per_bar": 0.0,
+        "maj7": 0.0,
+        "mMaj7": 0.0,
+        "power": 0.0,
+        "fraction_root_equals_first": 0.0,
+        "n_unique_roots": 0,
+        "root_changes": 0,
+        "same_root_quality_changes": 0,
+        "first_symbol": null,
+        "mMaj7_share": 0.0,
+        "power_share": 0.0
+      },
+      "guitar.wav": {
+        "n": 213,
+        "segs_per_bar": 1.908,
+        "maj7": 0.563,
+        "mMaj7": 0.052,
+        "power": 0.014,
+        "fraction_root_equals_first": 0.0282,
+        "n_unique_roots": 12,
+        "root_changes": 154,
+        "same_root_quality_changes": 10,
+        "first_symbol": "C#maj7",
+        "mMaj7_share": 0.0516,
+        "power_share": 0.0141
+      }
+    },
+    "waltz": {
+      "guitar.wav": {
+        "n": 149,
+        "segs_per_bar": null,
+        "maj7": 0.141,
+        "mMaj7": 0.02,
+        "power": 0.081,
+        "fraction_root_equals_first": 0.1141,
+        "n_unique_roots": 12,
+        "root_changes": 97,
+        "same_root_quality_changes": 15,
+        "first_symbol": "F/C",
+        "mMaj7_share": 0.0201,
+        "power_share": 0.0805
+      },
+      "source.mp3": {
+        "n": 148,
+        "segs_per_bar": null,
+        "maj7": 0.135,
+        "mMaj7": 0.02,
+        "power": 0.081,
+        "fraction_root_equals_first": 0.0,
+        "n_unique_roots": 12,
+        "root_changes": 98,
+        "same_root_quality_changes": 15,
+        "first_symbol": "N",
+        "mMaj7_share": 0.0203,
+        "power_share": 0.0811
+      }
+    }
+  }
+}

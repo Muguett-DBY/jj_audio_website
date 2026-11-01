@@ -1,0 +1,198 @@
+{
+  "baseline_detect": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9791666666666666
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 70,
+        "fraction_root_equals_first": 0.0571,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.6429,
+        "power_share": 0.0286
+      },
+      "guitar.wav": {
+        "n": 158,
+        "fraction_root_equals_first": 0.3354,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.0759,
+        "power_share": 0.1835
+      }
+    },
+    "cfg": {
+      "name": "baseline_detect",
+      "use_detect": true
+    }
+  },
+  "root_extra_0.25": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9791666666666666
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 58,
+        "fraction_root_equals_first": 0.069,
+        "n_unique_roots": 10,
+        "mMaj7_share": 0.5862,
+        "power_share": 0.0172
+      },
+      "guitar.wav": {
+        "n": 129,
+        "fraction_root_equals_first": 0.1783,
+        "n_unique_roots": 12,
+        "mMaj7_share": 0.0775,
+        "power_share": 0.2171
+      }
+    },
+    "cfg": {
+      "name": "root_extra_0.25",
+      "root_extra": 0.25,
+      "key_outside": 0.1,
+      "key_diatonic": 0.2
+    }
+  },
+  "root_extra_0.40": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9791666666666666
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 50,
+        "fraction_root_equals_first": 0.06,
+        "n_unique_roots": 9,
+        "mMaj7_share": 0.6,
+        "power_share": 0.0
+      },
+      "guitar.wav": {
+        "n": 114,
+        "fraction_root_equals_first": 0.1491,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.0702,
+        "power_share": 0.2281
+      }
+    },
+    "cfg": {
+      "name": "root_extra_0.40",
+      "root_extra": 0.4,
+      "key_outside": 0.1,
+      "key_diatonic": 0.2
+    }
+  },
+  "key_stronger": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9513333333333334
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 63,
+        "fraction_root_equals_first": 0.0635,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.5714,
+        "power_share": 0.0317
+      },
+      "guitar.wav": {
+        "n": 135,
+        "fraction_root_equals_first": 0.1926,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.0667,
+        "power_share": 0.2074
+      }
+    },
+    "cfg": {
+      "name": "key_stronger",
+      "root_extra": 0.0,
+      "key_outside": 0.2,
+      "key_diatonic": 0.3
+    }
+  },
+  "root_0.25_key_stronger": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9513333333333334
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 57,
+        "fraction_root_equals_first": 0.0702,
+        "n_unique_roots": 8,
+        "mMaj7_share": 0.5789,
+        "power_share": 0.0
+      },
+      "guitar.wav": {
+        "n": 126,
+        "fraction_root_equals_first": 0.1905,
+        "n_unique_roots": 11,
+        "mMaj7_share": 0.0635,
+        "power_share": 0.2222
+      }
+    },
+    "cfg": {
+      "name": "root_0.25_key_stronger",
+      "root_extra": 0.25,
+      "key_outside": 0.18,
+      "key_diatonic": 0.28
+    }
+  },
+  "root_0.35_key_mild": {
+    "synth": {
+      "clean_root": 1.0,
+      "clean_majmin": 1.0,
+      "clean_sevenths": 1.0,
+      "realistic_root": 1.0,
+      "realistic_majmin": 1.0,
+      "realistic_sevenths": 0.9791666666666666
+    },
+    "floors_ok": true,
+    "real_50f1": {
+      "current_mix.wav": {
+        "n": 50,
+        "fraction_root_equals_first": 0.06,
+        "n_unique_roots": 8,
+        "mMaj7_share": 0.6,
+        "power_share": 0.0
+      },
+      "guitar.wav": {
+        "n": 122,
+        "fraction_root_equals_first": 0.1557,
+        "n_unique_roots": 12,
+        "mMaj7_share": 0.082,
+        "power_share": 0.2295
+      }
+    },
+    "cfg": {
+      "name": "root_0.35_key_mild",
+      "root_extra": 0.35,
+      "key_outside": 0.15,
+      "key_diatonic": 0.25
+    }
+  }
+}

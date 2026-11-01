@@ -50,8 +50,10 @@ def test_garbage_is_none():
 def test_every_level_rule():
     cmaj7 = parse("Cmaj7")
     assert level_symbol(cmaj7, "simple") == "C"
-    assert level_symbol(cmaj7, "medium") == "Cmaj7"
+    assert level_symbol(cmaj7, "medium") == "C"
     assert level_symbol(cmaj7, "advanced") == "Cmaj7"
+    assert level_symbol(parse("CmMaj7"), "medium") == "Cm"
+    assert level_symbol(parse("CmMaj7"), "advanced") == "CmMaj7"
     dm7 = parse("Dm7")
     assert level_symbol(dm7, "simple") == "Dm"
     assert level_symbol(dm7, "medium") == "Dm7"
@@ -64,7 +66,7 @@ def test_every_level_rule():
     assert level_symbol(parse("C5"), "simple") == "C5"
     maj9 = Chord("C", "maj9")
     assert level_symbol(maj9, "simple") == "C"
-    assert level_symbol(maj9, "medium") == "Cmaj7"
+    assert level_symbol(maj9, "medium") == "C"
     assert level_symbol(maj9, "advanced") == "Cmaj9"
     six = parse("C6")
     assert level_symbol(six, "simple") == "C"

@@ -131,19 +131,19 @@ def test_missing_audio_returns_empty(tmp_path):
     assert detect_chords(tmp_path / "nope.wav", beats=(0.0, 0.5), bpm=120.0) == []
 
 
-def test_missing_model_dir_returns_empty(tmp_path, caplog):
+def test_missing_model_dir_falls_back_to_templates(tmp_path, caplog):
     path = tmp_path / "progression.wav"
     _write_progression(path)
 
     with caplog.at_level("WARNING"):
         events = detect_chords(
             path,
-            beats=(0.0, 0.5, 1.0),
+            beats=(0.0, 0.5, 1.0, 1.5, 2.0),
             bpm=120.0,
             model_dir=tmp_path / "missing-model",
         )
 
-    assert events == []
+    assert events  # template baseline still runs
     assert "chord model" in caplog.text.lower()
 
 
@@ -212,6 +212,21 @@ def test_sounded_major_seventh_stays(tmp_path):
     assert events[0].symbol.startswith("Cmaj7")
 
 
+def test_powerchord_without_a_third_stays_a_fifth(tmp_path):
+    """Root + fifth, no third, must stay C5. A 0.70 prior was naming it C."""
+    y = _tone(2.0, (130.81, 0.25), (196.00, 0.18))
+    path = tmp_path / "c5.wav"
+    sf.write(path, y, SR)
+    events = detect_chords(
+        path,
+        beats=tuple(i * 0.5 for i in range(5)),
+        bpm=120.0,
+        provisional_key="C",
+    )
+    assert events
+    assert all(event.symbol.split("/")[0] == "C5" for event in events)
+
+
 def test_bass_non_chord_tone_does_not_rename_the_root(tmp_path):
     guitar = _tone(2.0, (261.63, 0.20), (329.63, 0.16), (392.00, 0.14))
     bass = _tone(2.0, (87.31, 0.45))
@@ -263,7 +278,7 @@ def test_same_root_quality_flicker_under_one_beat_stays():
     # One-beat same-root absorb scored clean root 0.896. Within-bar chops stay blocked.
     events = [
         ChordEvent(0.0, 2.0, "C", 0.8, simple="C", medium="C"),
-        ChordEvent(2.0, 2.6, "Cmaj7", 0.4, simple="C", medium="Cmaj7"),
+        ChordEvent(2.0, 2.6, "Cmaj7", 0.4, simple="C", medium="C"),
         ChordEvent(2.6, 4.0, "C", 0.8, simple="C", medium="C"),
     ]
     absorbed = _absorb_short_runs(events, [0.5, 0.2, 0.5], beat_sec=1.0)

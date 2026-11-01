@@ -10,8 +10,7 @@ COPY src ./src
 COPY backend ./backend
 COPY scripts ./scripts
 
-RUN pip install --no-cache-dir -e ".[dev,eval]" && \
-    pip install --no-cache-dir -r requirements-demucs.txt
+RUN pip install --no-cache-dir .[roformer]
 
 ENV PYTHONPATH=/app/src:/app
 ENV ATT_DATA_DIR=/app/data

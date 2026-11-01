@@ -292,6 +292,43 @@ def _quality_of(symbol: str) -> str:
     return "maj"
 
 
+def _root_of(symbol: str) -> str | None:
+    try:
+        from audio_to_tab.chord_symbols import parse
+
+        chord = parse(symbol)
+    except Exception:
+        return None
+    return None if chord is None else chord.root
+
+
+def root_stability(events) -> dict:
+    """Phase-1 FM2 metrics: how much the labelled root wanders after the first event."""
+    roots = [_root_of(event.symbol) for event in events]
+    qualities = [_quality_of(event.symbol) for event in events]
+    total = max(1, len(roots))
+    first = roots[0] if roots else None
+    same_as_first = sum(1 for root in roots if root == first and first is not None)
+    unique = {root for root in roots if root}
+    root_changes = sum(1 for index in range(1, len(roots)) if roots[index] != roots[index - 1])
+    same_root_quality_changes = sum(
+        1
+        for index in range(1, len(events))
+        if roots[index] == roots[index - 1]
+        and qualities[index] != qualities[index - 1]
+        and roots[index] is not None
+    )
+    return {
+        "fraction_root_equals_first": round(same_as_first / total, 4),
+        "n_unique_roots": len(unique),
+        "root_changes": root_changes,
+        "same_root_quality_changes": same_root_quality_changes,
+        "first_symbol": events[0].symbol if events else None,
+        "mMaj7_share": round(qualities.count("mMaj7") / total, 4),
+        "power_share": round(qualities.count("5") / total, 4),
+    }
+
+
 def _proxy_runs() -> dict:
     """Unlabelled real-run proxies. Reads audio; does not write inside data/ui_runs."""
     runs_root = REPO / "data" / "ui_runs"
@@ -301,6 +338,8 @@ def _proxy_runs() -> dict:
         "9a18a73f-193c-4058-a96c-dfb490e565cc": {"role": "band", "meter": 4},
         "ad6e7c9f-df76-411e-a700-4bd2b3d65d30": {"role": "band", "meter": 4},
     }
+    saved = BENCH / "band_mix_before.json"
+    saved_beats = json.loads(saved.read_text(encoding="utf-8")) if saved.is_file() else {}
     pitches = ("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
     major = {0: "maj", 2: "min", 4: "min", 5: "maj", 7: "maj", 9: "min", 11: "dim"}
     minor = {0: "min", 2: "dim", 3: "maj", 5: "min", 7: "min", 8: "maj", 10: "maj"}
@@ -310,14 +349,21 @@ def _proxy_runs() -> dict:
     for run_id, meta in wanted.items():
         run = runs_root / run_id
         analysis_path = run / "analysis.json"
-        source = run / "source.mp3"
-        if not analysis_path.is_file() or not source.is_file():
+        # Prefer current_mix / guitar when present so proxies match diagnosis pins.
+        audio_candidates = (
+            run / "current_mix.wav",
+            run / "source.mp3",
+            run / "guitar.wav",
+        )
+        source = next((path for path in audio_candidates if path.is_file()), None)
+        if not analysis_path.is_file() or source is None:
             continue
         analysis = json.loads(analysis_path.read_text(encoding="utf-8"))
-        beats = [float(value) for value in analysis.get("beats") or []]
-        bpm = float(analysis.get("bpm") or 0.0)
+        pin = saved_beats.get(run_id) or {}
+        beats = [float(value) for value in (pin.get("beats") or analysis.get("beats") or [])]
+        bpm = float(pin.get("bpm") or analysis.get("bpm") or 0.0)
         meter = int(analysis.get("beats_per_measure") or 4)
-        duration = float(analysis.get("duration_sec") or 0.0)
+        duration = float(pin.get("duration") or analysis.get("duration_sec") or 0.0)
         key = analysis.get("key") or ""
         events = detect_chords(source, beats=beats, bpm=bpm)
         beat_sec = 60.0 / bpm if bpm > 0 else 0.5
@@ -347,18 +393,33 @@ def _proxy_runs() -> dict:
                     non += 1
         short = sum(1 for event in events if (event.end - event.start) < beat_sec - 1e-9)
         stored_meter_correct = int(meter) == int(meta["meter"])
+        stability = root_stability(events)
+        guitar_stability = None
+        guitar = run / "guitar.wav"
+        if guitar.is_file() and guitar.resolve() != source.resolve():
+            guitar_events = detect_chords(guitar, beats=beats, bpm=bpm)
+            guitar_stability = root_stability(guitar_events)
         rows.append(
             {
                 "run": run_id,
                 "role": meta["role"],
+                "audio": source.name,
                 "stored_beats_per_measure": meter,
                 "meter_correct": stored_meter_correct,
                 "segments": len(events),
                 "segs_per_bar": (len(events) / bars) if bars else 0.0,
                 "maj7_share": qualities.count("maj7") / total,
+                "mMaj7_share": stability["mMaj7_share"],
+                "power_share": stability["power_share"],
                 "sus4_share": qualities.count("sus4") / total,
                 "non_diatonic_share": non / total,
                 "share_events_under_one_beat": short / total,
+                "fraction_root_equals_first": stability["fraction_root_equals_first"],
+                "n_unique_roots": stability["n_unique_roots"],
+                "root_changes": stability["root_changes"],
+                "same_root_quality_changes": stability["same_root_quality_changes"],
+                "first_symbol": stability["first_symbol"],
+                "guitar_root_stability": guitar_stability,
                 "key": key,
             }
         )

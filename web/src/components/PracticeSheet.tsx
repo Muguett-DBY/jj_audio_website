@@ -32,6 +32,8 @@ const EMPTY_CHORDS = "No chords in this run.";
 const EMPTY_SECTIONS = "No sections in this run.";
 const EMPTY_LYRICS = "No lyrics found (instrumental, or the lyrics model is unavailable).";
 const EMPTY_TAB = "No tab for this run. Re-run with guitar separation.";
+const CHORD_DEMO_NOTE =
+  "Demo — chord chart is a work in progress; roots can drift on dense mixes — verify by ear.";
 
 function clock(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -126,7 +128,7 @@ export function PracticeSheet({
 }) {
   const [panel, setPanel] = useState<PracticeTab>("chords");
   const [capo, setCapo] = useState(0);
-  const [level, setLevel] = useState<ChordLevel>("chart");
+  const [level, setLevel] = useState<ChordLevel>("medium");
   const [edits, setEdits] = useState<Record<number, string>>({});
   const [draft, setDraft] = useState<{ index: number; value: string } | null>(null);
   const [frame, setFrame] = useState(0);
@@ -285,6 +287,7 @@ export function PracticeSheet({
             );
           })}
         </div>
+        <p className="practice-note">{CHORD_DEMO_NOTE}</p>
       </div>
     ) : (
       <p className="practice-empty">{EMPTY_CHORDS}</p>

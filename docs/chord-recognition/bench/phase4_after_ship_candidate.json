@@ -1,0 +1,27 @@
+{
+  "synth": {
+    "clean_root": 1.0,
+    "clean_majmin": 1.0,
+    "clean_sevenths": 1.0,
+    "realistic_root": 1.0,
+    "realistic_majmin": 1.0,
+    "realistic_sevenths": 0.9791666666666666
+  },
+  "floors_ok": true,
+  "real_50f1": {
+    "current_mix.wav": {
+      "n": 68,
+      "fraction_root_equals_first": 0.0588,
+      "n_unique_roots": 9,
+      "mMaj7_share": 0.6029,
+      "power_share": 0.0
+    },
+    "guitar.wav": {
+      "n": 153,
+      "fraction_root_equals_first": 0.1569,
+      "n_unique_roots": 12,
+      "mMaj7_share": 0.0719,
+      "power_share": 0.183
+    }
+  }
+}

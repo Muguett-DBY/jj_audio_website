@@ -2,7 +2,8 @@
 
 Beat-synchronous CQT chroma, weighted templates, and Viterbi smoothing. Scores are
 z-normalised per window so quality and key priors are in standard deviations.
-``model_dir`` is reserved for a future neural checkpoint and is not loaded here.
+``model_dir`` opts into the BTC maj/min scorer when weights are present
+(``audio_to_tab.chord_neural``); otherwise the template baseline runs.
 """
 
 from __future__ import annotations
@@ -410,6 +411,22 @@ def _quality_prior_for_window(chroma: np.ndarray) -> np.ndarray:
             )
             if strong_color or voiced:
                 prior[index] = min(float(prior[index]), 0.05)
+        elif chord.quality == "5":
+            # A bare fifth leads the triad by ~0.79σ (measured C2+G2). The 0.70
+            # prior plus the tonic triad's diatonic bonus still names it C.
+            # Relax only when neither third is present, so a real triad stays.
+            fifth = float(chroma[(root + 7) % 12])
+            major_third = float(chroma[(root + 4) % 12])
+            minor_third = float(chroma[(root + 3) % 12])
+            root_energy = float(chroma[root])
+            bare = (
+                root_energy > 1e-8
+                and fifth >= 0.35 * root_energy
+                and major_third < 0.25 * root_energy
+                and minor_third < 0.25 * root_energy
+            )
+            if bare:
+                prior[index] = min(float(prior[index]), 0.05)
     return prior
 
 
@@ -524,12 +541,35 @@ def detect_chords(
     template chroma. Omit it and the slash is read from this file's own low end.
     """
     path = Path(audio_path)
-    if model_dir is not None:
-        model_path = Path(model_dir)
-        if not model_path.is_dir():
-            logger.warning("Chord model directory not found: %s", model_path)
-            return []
-        logger.debug("No neural chord loader in this build; using the template baseline")
+    # Opt-in neural path (BTC maj/min). Template remains the default.
+    try:
+        from audio_to_tab.chord_neural import (
+            chord_model_available,
+            chord_model_requested,
+            default_chord_model_dir,
+            detect_chords_btc,
+            ensure_chord_model,
+        )
+
+        neural_dir: Path | None = Path(model_dir) if model_dir is not None else None
+        if neural_dir is None and chord_model_requested():
+            neural_dir = default_chord_model_dir()
+        if neural_dir is not None:
+            if not chord_model_available(neural_dir) and chord_model_requested():
+                try:
+                    ensure_chord_model(neural_dir, progress=progress)
+                except Exception:
+                    logger.warning("Chord model download failed; using templates", exc_info=True)
+            if chord_model_available(neural_dir):
+                neural = detect_chords_btc(path, model_dir=neural_dir, progress=progress)
+                if neural is not None:
+                    return neural
+            elif model_dir is not None and not Path(model_dir).is_dir():
+                logger.warning("Chord model directory not found: %s", model_dir)
+            else:
+                logger.debug("Chord model unavailable at %s; using templates", neural_dir)
+    except Exception:
+        logger.debug("Chord neural import/setup failed; using templates", exc_info=True)
 
     if not path.is_file():
         logger.warning("Chord audio not found: %s", path)

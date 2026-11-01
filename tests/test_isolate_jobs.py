@@ -1867,7 +1867,7 @@ def _stem(path: Path, scale: float) -> None:
     sf.write(str(path), y, sr)
 
 
-def test_harmony_source_prefers_stem_sum(tmp_path: Path):
+def test_harmony_source_prefers_guitar_piano_sum(tmp_path: Path):
     import ui.isolate_jobs as jobs
 
     for name, scale in (("guitar", 0.2), ("piano", 0.1), ("other", 0.05), ("bass", 0.15)):
@@ -1879,12 +1879,29 @@ def test_harmony_source_prefers_stem_sum(tmp_path: Path):
 
     harmony, _vocals, _metro, kind = jobs._analysis_sources(artifacts, mix)
 
-    assert kind == "stem_sum"
+    assert kind == "guitar_piano_sum"
     assert harmony is not None
     assert harmony.name == "harmony_sum.wav"
     data, _sr = sf.read(str(harmony))
     assert float(np.max(np.abs(data))) == pytest.approx(0.99, abs=0.02)
     assert harmony.resolve() != artifacts["no_vocals"].resolve()
+    assert harmony.resolve() != artifacts["other"].resolve()
+
+
+def test_harmony_source_guitar_only_when_no_piano(tmp_path: Path):
+    import ui.isolate_jobs as jobs
+
+    _stem(tmp_path / "guitar.wav", 0.2)
+    _stem(tmp_path / "other.wav", 0.05)
+    mix = tmp_path / "mix.wav"
+    _stem(mix, 0.5)
+    artifacts = {"guitar": tmp_path / "guitar.wav", "other": tmp_path / "other.wav"}
+
+    harmony, _vocals, _metro, kind = jobs._analysis_sources(artifacts, mix)
+
+    assert kind == "guitar_sum"
+    assert harmony is not None
+    assert harmony.name == "harmony_sum.wav"
 
 
 def test_harmony_source_keeps_other_when_no_guitar(tmp_path: Path):

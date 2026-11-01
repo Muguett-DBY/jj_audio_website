@@ -76,6 +76,14 @@ jobs:
           python -m pytest tests/ -q \
             --deselect tests/test_api.py::test_upload_and_job
 
+      - name: TypeScript typecheck (web)
+        if: runner.os != 'macOS'
+        run: cd web && npx tsc --noEmit
+
+      - name: Vitest (web)
+        if: runner.os != 'macOS'
+        run: cd web && npm test
+
   lint:
     runs-on: ubuntu-latest
     steps:
