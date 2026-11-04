@@ -1410,7 +1410,9 @@ def _write_harmony_sum(
 
     ``other`` densifies 12-bin chroma on distorted mixes (docs/chord-recognition/08
     FM5); bass is slash-only via ``bass_path``. Kind is ``guitar_piano_sum`` when
-    both stems contribute, else ``guitar_sum``.
+    both stems contribute, else ``guitar_sum``. When the sum is more than twice
+    as loud as the mix, return the guitar stem with kind ``guitar_sum`` and do
+    not write ``harmony_sum.wav``.
     """
     import numpy as np
     import soundfile as sf
@@ -1459,7 +1461,9 @@ def _write_harmony_sum(
             mix = librosa.resample(mix, orig_sr=mix_sr, target_sr=sample_rate)
         mix_rms = float(np.sqrt(np.mean(np.square(mix)))) if mix is not None and mix.size else 0.0
         if mix_rms > 0 and sum_rms > 2.0 * mix_rms:
-            return None, "too_loud"
+            # Sum would clip the chroma; use the guitar stem alone instead of
+            # falling through to no_vocals / other / full mix.
+            return guitar, "guitar_sum"
     peak = float(np.max(np.abs(stacked))) if stacked.size else 0.0
     if peak > 0:
         stacked *= 0.99 / peak

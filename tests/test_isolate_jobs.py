@@ -1904,6 +1904,30 @@ def test_harmony_source_guitar_only_when_no_piano(tmp_path: Path):
     assert harmony.name == "harmony_sum.wav"
 
 
+def test_harmony_source_too_loud_sum_uses_guitar(tmp_path: Path):
+    import ui.isolate_jobs as jobs
+
+    _stem(tmp_path / "guitar.wav", 5.0)
+    _stem(tmp_path / "piano.wav", 5.0)
+    _stem(tmp_path / "other.wav", 0.05)
+    _stem(tmp_path / "no_vocals.wav", 0.4)
+    mix = tmp_path / "mix.wav"
+    _stem(mix, 0.2)
+    artifacts = {
+        "guitar": tmp_path / "guitar.wav",
+        "piano": tmp_path / "piano.wav",
+        "other": tmp_path / "other.wav",
+        "no_vocals": tmp_path / "no_vocals.wav",
+    }
+
+    harmony, _vocals, _metro, kind = jobs._analysis_sources(artifacts, mix)
+
+    assert kind == "guitar_sum"
+    assert harmony is not None
+    assert harmony.resolve() == artifacts["guitar"].resolve()
+    assert not (tmp_path / "harmony_sum.wav").exists()
+
+
 def test_harmony_source_keeps_other_when_no_guitar(tmp_path: Path):
     import ui.isolate_jobs as jobs
     from audio_to_tab.isolate import fold_other_into_guitar

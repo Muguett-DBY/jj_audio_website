@@ -1,11 +1,32 @@
 # Audio Tools
 
-Audio Tools separates a song into tracks and can make a guitar tab PDF. It is two products on one engine.
+Separate a song into stems, practice with a mixer and chord chart, and export a guitar tab PDF. One shared engine powers a local desktop app and a hosted website.
 
-- **Desktop** runs on this computer: Streamlit in `ui/`, started by `packaging/launcher.py`.
+![Desktop home](docs/screenshots/desktop-home.png)
+
+*Desktop Home — open a song, jump to Isolation / YouTube / Tab PDF, and resume Recents.*
+
+![Desktop stem mixer](docs/screenshots/desktop-mixer.png)
+
+*Audio Isolation — per-stem waveforms with mute, solo, level, and pan (Waltz for Debby run).*
+
+## About
+
+- **Desktop** runs on this computer: Streamlit in `ui/`, started by `packaging/launcher.py`. No Docker.
 - **Website** is the hosted app: FastAPI in `backend/` plus the React app in `web/`.
+- **Shared engine** lives in `src/audio_to_tab/` (import as `audio_to_tab`).
 
-Python **3.11** (3.10–3.12 only). From a clone:
+Python **3.11** (3.10–3.12 only). Desktop installers and the tester app: [DESKTOP.md](DESKTOP.md). Hosted deploy: [DEPLOY.md](DEPLOY.md).
+
+## Table of contents
+
+- [Quickstart](#quickstart)
+- [Tester](#tester)
+- [Build installers (0.1.5)](#build-installers-015)
+
+## Quickstart
+
+From a clone:
 
 ```bash
 make install
@@ -18,10 +39,6 @@ On Windows:
 .\scripts\dev.ps1 install
 .\scripts\dev.ps1 test
 ```
-
-Desktop installers and the tester app: [DESKTOP.md](DESKTOP.md). Hosted deploy: [DEPLOY.md](DEPLOY.md).
-
-Desktop installers and local tester commands for terminal
 
 ---
 

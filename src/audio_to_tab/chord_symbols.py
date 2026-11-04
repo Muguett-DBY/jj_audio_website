@@ -138,18 +138,16 @@ _SIMPLE = {
     "9": "maj",
     "m9": "min",
 }
-# Medium keeps dominant / minor sevenths (often structural) but collapses maj7 /
-# mMaj7 to the triad. On real distorted mixes those two qualities dominate false
-# labels (docs/chord-recognition/08); chart/advanced still shows the detector
-# symbol. add9/maj9 are never detector states — they only appear via parse.
+# Medium keeps structural sevenths (7, m7, maj7, mMaj7). Simple still collapses
+# them to triads. add9/maj9 are never detector states — they only appear via parse.
 _MEDIUM = {
     **_SIMPLE,
     "7": "7",
-    "maj7": "maj",
+    "maj7": "maj7",
     "m7": "m7",
     "m7b5": "m7b5",
     "dim7": "dim7",
-    "mMaj7": "min",
+    "mMaj7": "mMaj7",
     "maj9": "maj",
     "7b9": "7",
     "9": "7",

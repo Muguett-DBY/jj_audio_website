@@ -8,9 +8,12 @@ import soundfile as sf
 
 from audio_to_tab.analysis import ChordEvent
 from audio_to_tab.chords import (
+    _QUALITY_PRIOR,
+    _TEMPLATE_NAMES,
     _absorb_short_runs,
     _merge_events,
     _normalize_symbol,
+    _quality_prior_for_window,
     _snap_to_beat,
     detect_chords,
     estimate_tuning_semitones,
@@ -210,6 +213,48 @@ def test_sounded_major_seventh_stays(tmp_path):
     events = detect_chords(path, beats=tuple(i * 0.5 for i in range(5)), bpm=120.0, provisional_key="C")
     assert events
     assert events[0].symbol.startswith("Cmaj7")
+
+
+def test_voiced_dominant_seventh_stays(tmp_path):
+    y = _tone(
+        2.0,
+        (261.63, 0.18),
+        (329.63, 0.16),
+        (392.00, 0.14),
+        (466.16, 0.15),
+    )
+    path = tmp_path / "c7.wav"
+    sf.write(path, y, SR)
+    events = detect_chords(path, beats=tuple(i * 0.5 for i in range(5)), bpm=120.0, provisional_key="C")
+    assert events
+    assert events[0].symbol.startswith("C7")
+
+
+def test_voiced_minor_seventh_stays(tmp_path):
+    y = _tone(
+        2.0,
+        (261.63, 0.18),
+        (311.13, 0.16),
+        (392.00, 0.14),
+        (466.16, 0.15),
+    )
+    path = tmp_path / "cm7.wav"
+    sf.write(path, y, SR)
+    events = detect_chords(path, beats=tuple(i * 0.5 for i in range(5)), bpm=120.0, provisional_key="C")
+    assert events
+    assert events[0].symbol.startswith("Cm7")
+
+
+def test_smeared_window_keeps_seventh_prior():
+    chroma = np.ones(12, dtype=np.float64)
+    chroma[0] = chroma[4] = chroma[7] = chroma[11] = 1.2
+    prior = _quality_prior_for_window(chroma)
+    maj7_index = _TEMPLATE_NAMES.index("Cmaj7")
+    seven_index = _TEMPLATE_NAMES.index("C7")
+    assert float(prior[maj7_index]) == pytest.approx(_QUALITY_PRIOR["maj7"])
+    assert float(prior[seven_index]) == pytest.approx(_QUALITY_PRIOR["7"])
+    assert float(prior[seven_index]) > 0.0
+    assert float(prior[seven_index]) != pytest.approx(0.05)
 
 
 def test_powerchord_without_a_third_stays_a_fifth(tmp_path):

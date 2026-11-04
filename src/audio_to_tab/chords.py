@@ -79,8 +79,8 @@ _QUALITY_SUFFIX = {
 _QUALITY_PRIOR = {
     "maj": 0.0,
     "min": 0.0,
-    "7": 0.0,
-    "maj7": 0.55,
+    "7": 0.15,
+    "maj7": 0.75,
     "m7": 0.15,
     "6": 0.45,
     "m6": 0.45,
@@ -90,7 +90,7 @@ _QUALITY_PRIOR = {
     "aug": 0.35,
     "m7b5": 0.45,
     "dim7": 0.35,
-    "mMaj7": 0.50,
+    "mMaj7": 1.00,
     "5": 0.70,
 }
 _MAJOR_DIATONIC = {
@@ -376,11 +376,13 @@ def _key_prior(key: str | None) -> np.ndarray:
 
 
 def _quality_prior_for_window(chroma: np.ndarray) -> np.ndarray:
-    """Constant quality prior, relaxed when a major seventh is actually sounding.
+    """Constant quality prior, relaxed when a seventh is selectively sounding.
 
     A balanced Cmaj7 voicing leads the C triad by only ~0.37σ. A flat 0.55σ
     prior erases it. The same prior stays on when the seventh bin is below
-    0.35× the third, which is the overtone case (measured ~0.18×).
+    0.35× the third, which is the overtone case (measured ~0.18×). On a
+    dense mix every pitch class is loud, so the seventh must also beat the
+    mean of the bins outside the template (2×) before the prior drops.
     """
     prior = _PRIOR_VECTOR.copy()
     if chroma.size != 12 or float(np.max(chroma)) <= 0:
@@ -392,6 +394,7 @@ def _quality_prior_for_window(chroma: np.ndarray) -> np.ndarray:
         if chord.quality in {"maj7", "mMaj7", "m7", "7"}:
             third_interval = 3 if chord.quality in {"mMaj7", "m7"} else 4
             seventh_interval = 10 if chord.quality in {"m7", "7"} else 11
+            fifth_interval = 7
             third = float(chroma[(root + third_interval) % 12])
             seventh = float(chroma[(root + seventh_interval) % 12])
             root_energy = float(chroma[root])
@@ -409,7 +412,15 @@ def _quality_prior_for_window(chroma: np.ndarray) -> np.ndarray:
                 and third > 1e-8
                 and seventh >= 0.35 * third
             )
-            if strong_color or voiced:
+            tone_pcs = {
+                root,
+                (root + third_interval) % 12,
+                (root + fifth_interval) % 12,
+                (root + seventh_interval) % 12,
+            }
+            outside = [float(chroma[pc]) for pc in range(12) if pc not in tone_pcs]
+            selective = seventh > 2.0 * (float(np.mean(outside)) + 1e-9)
+            if (strong_color or voiced) and selective:
                 prior[index] = min(float(prior[index]), 0.05)
         elif chord.quality == "5":
             # A bare fifth leads the triad by ~0.79σ (measured C2+G2). The 0.70
