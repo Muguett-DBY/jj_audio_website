@@ -2,13 +2,23 @@
 
 Separate a song into stems, practice with a mixer and chord chart, and export a guitar tab PDF. One shared engine powers a local desktop app and a hosted website.
 
-![Desktop home](docs/screenshots/desktop-home.png)
+<p align="center">
+  <img src="docs/screenshots/desktop-home.png" alt="Desktop Home" width="100%">
+</p>
 
-*Desktop Home — open a song, jump to Isolation / YouTube / Tab PDF, and resume Recents.*
+*Desktop Home — Learn a song, YouTube, Tab PDF, Recents, and the file library (full window).*
 
-![Desktop stem mixer](docs/screenshots/desktop-mixer.png)
+<p align="center">
+  <img src="docs/screenshots/desktop-mixer.png" alt="Desktop stem mixer" width="100%">
+</p>
 
-*Audio Isolation — per-stem waveforms with mute, solo, level, and pan (Waltz for Debby run).*
+*Audio Isolation — stem mixer with waveforms, mute/solo/level/pan, while listening to Waltz for Debby.*
+
+<p align="center">
+  <img src="docs/screenshots/desktop-mixer.gif" alt="Stem mixer playback" width="100%">
+</p>
+
+*Same mixer while playback runs (GIF). MP4 copy: [docs/screenshots/desktop-mixer.mp4](docs/screenshots/desktop-mixer.mp4).*
 
 ## About
 
