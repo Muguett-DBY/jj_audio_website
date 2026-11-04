@@ -306,6 +306,7 @@ def test_home_v2_keeps_the_legacy_path():
     assert "def _main_legacy" in source
     assert "st.title(product, anchor=False)" in source
     assert "ui_v2_enabled()" in source
+    assert 'home_v2_first_paint_done' in source
     frontend = (
         Path(__file__).resolve().parents[1]
         / "ui"
@@ -317,6 +318,7 @@ def test_home_v2_keeps_the_legacy_path():
     assert "run_dir" not in frontend
     assert "No songs yet." in frontend
     assert "No songs match that search." in frontend
+    assert 'class="skel"' in frontend or "className = \"skel\"" in frontend or 'el("div", "skel")' in frontend
     assert "#F6AD49" in frontend
     assert "#75EBF5" not in frontend
     assert "#E9EEF5" not in frontend

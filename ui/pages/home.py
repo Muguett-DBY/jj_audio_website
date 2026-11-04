@@ -685,7 +685,10 @@ def _main_v2() -> None:
     # Automatic analysis lives in the background worker. This pending path is
     # only the explicit Analyse click, which still shows Home's loading state.
     pending = st.session_state.get("home_v2_pending")
-    show_loading = bool(pending) and not st.session_state.get("home_v2_pending_shown")
+    first_paint = not st.session_state.get("home_v2_first_paint_done")
+    show_loading = (
+        bool(pending) and not st.session_state.get("home_v2_pending_shown")
+    ) or first_paint
     flash = None
     if not show_loading:
         raw_flash = st.session_state.pop("home_flash", None)
@@ -719,7 +722,10 @@ def _main_v2() -> None:
     except Exception:
         _main_legacy()
         return
-    if show_loading:
+    if first_paint:
+        st.session_state["home_v2_first_paint_done"] = True
+        st.rerun()
+    if show_loading and pending:
         st.session_state["home_v2_pending_shown"] = True
         st.rerun()
     if isinstance(event, dict) and event.get("nonce") == stored_nonce:

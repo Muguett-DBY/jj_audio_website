@@ -399,6 +399,20 @@ def test_main_dispatches_to_server_role(tmp_path, monkeypatch):
     assert launcher.main() == 7
 
 
+def test_launch_shell_html_looks_like_home():
+    launcher = _load_launcher()
+    dark = launcher.launch_shell_html("#192542")
+    light = launcher.launch_shell_html("#FFF6DC")
+    assert "#192542" in dark
+    assert "data-skel" in dark
+    assert "Files" in dark
+    assert "Starting…" in dark
+    assert "logo" not in dark.lower()
+    assert "Audio Tools" not in dark
+    assert "#FFF6DC" in light
+    assert "prefers-reduced-motion" in dark
+
+
 def test_native_window_creates_with_url_after_health(tmp_path, monkeypatch):
     launcher = _load_launcher()
     monkeypatch.delenv("AUDIO_TOOLS_EDITION", raising=False)
@@ -422,11 +436,14 @@ def test_native_window_creates_with_url_after_health(tmp_path, monkeypatch):
 
     assert rc == 0
     assert polls["count"] == 3
-    # First navigation is the Streamlit URL on the GUI thread — not splash + load_url.
-    assert window.loaded == []
+    # Shell first, then one navigation to Streamlit after health.
     assert calls["create"][0][0] == launcher.window_title()
-    assert calls["create"][0][1].get("url") == "http://127.0.0.1:8501"
-    assert "html" not in calls["create"][0][1]
+    create_kwargs = calls["create"][0][1]
+    assert "url" not in create_kwargs
+    shell = create_kwargs.get("html") or ""
+    assert "data-skel" in shell
+    assert "#192542" in shell or "#FFF6DC" in shell
+    assert window.loaded == ["http://127.0.0.1:8501"]
     assert calls["start"][0]["private_mode"] is False
     # st.download_button and st.file_uploader are dead without these.
     assert module.settings["ALLOW_DOWNLOADS"] is True
@@ -441,13 +458,14 @@ def test_native_window_reports_a_server_that_never_gets_healthy(tmp_path, monkey
     errors: list[str] = []
     monkeypatch.setattr(launcher, "_show_error", errors.append)
     window = FakeWindow()
-    _install_fake_webview(monkeypatch, window)
+    module, calls = _install_fake_webview(monkeypatch, window)
 
     rc = launcher._run_native_window("http://127.0.0.1:8501", 8501, FakeServer())
 
     assert rc == 1
+    assert "html" in calls["create"][0][1]
     assert window.loaded == []
-    assert window.destroyed is False
+    assert window.destroyed is True
     assert errors and "could not start" in errors[0]
 
 
@@ -1185,8 +1203,10 @@ def test_window_background_color_follows_saved_light_theme(tmp_path, monkeypatch
     assert launcher._saved_window_theme_mode() is None
 
     source = LAUNCHER_PATH.read_text(encoding="utf-8")
+    assert "wash = window_background_color(theme_mode)" in source
+    assert "launch_shell_html(wash)" in source
     window = source.split("create_kwargs: dict = {", 1)[1].split("webview.create_window", 1)[0]
-    assert "window_background_color(_saved_window_theme_mode())" in window
+    assert '"background_color": wash' in window
     assert "hidden" not in window
 
 

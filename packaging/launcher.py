@@ -1041,6 +1041,84 @@ def window_background_color(mode: str | None) -> str:
     return _WINDOW_BG_DARK
 
 
+def launch_shell_html(background: str) -> str:
+    """Quiet Home-shaped first paint. No logo, no splash branding."""
+    bg = str(background or _WINDOW_BG_DARK).strip() or _WINDOW_BG_DARK
+    light = bg.upper() == _WINDOW_BG_LIGHT
+    rail = "#142033" if not light else "#F0E6C8"
+    wash = "#2a4467" if not light else "#E8DCC0"
+    text = "#d5deea" if not light else "#3a3a3a"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title></title>
+<style>
+  html, body {{
+    margin: 0;
+    height: 100%;
+    background: {bg};
+    color: {text};
+    font-family: system-ui, sans-serif;
+  }}
+  .shell {{
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+  }}
+  .rail {{
+    width: 240px;
+    flex: 0 0 240px;
+    background: {rail};
+  }}
+  .main {{
+    flex: 1;
+    min-width: 0;
+    padding: 24px 20px 0 33px;
+  }}
+  .heading {{
+    margin: 32px 0 12px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+    color: {text};
+  }}
+  .skel {{
+    height: 56px;
+    margin: 0;
+    background: {wash};
+    border-bottom: 1px solid transparent;
+  }}
+  .cue {{
+    margin: 8px 0 16px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+  }}
+  @media (prefers-reduced-motion: reduce) {{
+    .cue {{ opacity: 1; }}
+  }}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-hidden="true"></aside>
+    <main class="main">
+      <div class="cue">Starting…</div>
+      <div class="heading">Files</div>
+      <div class="skel" data-skel="0"></div>
+      <div class="skel" data-skel="1"></div>
+      <div class="skel" data-skel="2"></div>
+    </main>
+  </div>
+</body>
+</html>
+"""
+
+
 def _saved_window_theme_mode() -> str | None:
     """Read Appearance from theme_config.json. None when the file is missing."""
     raw = os.environ.get("AUDIO_TOOLS_DATA_DIR", "").strip()
@@ -1076,12 +1154,6 @@ def _run_native_window(url: str, port: int, server: subprocess.Popen) -> int:
             return 1
         return _run_in_browser(url, port, server)
 
-    _log("Waiting for Streamlit health before opening the native window")
-    if not _wait_until_healthy(port, HEALTH_TIMEOUT_SEC, lambda: server.poll() is None):
-        _show_error(_not_ready_message(url))
-        return 1
-    _log(f"Health check OK; opening native window for {url}")
-
     try:
         if sys.platform.startswith("win"):
             # pythonnet/WinForms require STA; set before importing clr via pywebview.
@@ -1105,6 +1177,8 @@ def _run_native_window(url: str, port: int, server: subprocess.Popen) -> int:
     window = None
     stopping = threading.Event()
     failed = threading.Event()
+    theme_mode = _saved_window_theme_mode()
+    wash = window_background_color(theme_mode)
 
     def close_window() -> None:
         if window is None:
@@ -1124,8 +1198,8 @@ def _run_native_window(url: str, port: int, server: subprocess.Popen) -> int:
     def watch_window() -> None:
         """Foreground the window once it exists, and log HWNDs either way.
 
-        Never navigates from this thread: window.load_url() marshals onto the GUI
-        thread through pythonnet and deadlocks against the GIL.
+        Do not call window.load_url from this thread: pythonnet can deadlock the GIL.
+        Navigation after health runs only from the webview.start boot callback.
         """
         shown = getattr(getattr(window, "events", None), "shown", None)
         visible = False
@@ -1162,20 +1236,40 @@ def _run_native_window(url: str, port: int, server: subprocess.Popen) -> int:
                 f"shown={_window_was_shown(window)}"
             )
 
+    def boot() -> None:
+        """After the shell is up, wait for Streamlit, then navigate once."""
+        _log(f"Shell open; waiting for Streamlit health before {url}")
+        if not _wait_until_healthy(port, HEALTH_TIMEOUT_SEC, lambda: server.poll() is None):
+            failed.set()
+            _show_error(_not_ready_message(url))
+            close_window()
+            return
+        if stopping.is_set():
+            return
+        _log(f"Health check OK; navigating once to {url}")
+        try:
+            window.load_url(url)
+        except Exception as exc:
+            failed.set()
+            _log(f"load_url failed: {exc}")
+            _show_error(_not_ready_message(url))
+            close_window()
+
     try:
         create_kwargs: dict = {
+            "html": launch_shell_html(wash),
             "width": WINDOW_SIZE[0],
             "height": WINDOW_SIZE[1],
             "min_size": WINDOW_MIN_SIZE,
             "text_select": True,
             # Light mode matches the page wash. Dark, system, and a missing file stay dark.
-            # The window stays visible; hiding it until loaded can flash twice on Windows.
-            "background_color": window_background_color(_saved_window_theme_mode()),
+            # Keep the window visible with the shell; hiding until loaded can flash twice.
+            "background_color": wash,
         }
         if sys.platform.startswith("win"):
             create_kwargs["shadow"] = False
-        _log(f"Creating native window for {url} (GUI-thread first navigation)")
-        window = webview.create_window(window_title(), url, **create_kwargs)
+        _log("Creating native window with Home-shaped shell (navigate after health)")
+        window = webview.create_window(window_title(), **create_kwargs)
         shown = getattr(getattr(window, "events", None), "shown", None)
         if shown is not None and hasattr(shown, "__iadd__"):
             def _on_form_shown(*_args, **_kwargs) -> None:
@@ -1186,7 +1280,7 @@ def _run_native_window(url: str, port: int, server: subprocess.Popen) -> int:
         threading.Thread(target=watch_server, name="audiotools-server-watch", daemon=True).start()
         threading.Thread(target=watch_window, name="audiotools-window-watch", daemon=True).start()
         threading.Thread(target=gui_heartbeat, name="audiotools-gui-heartbeat", daemon=True).start()
-        _start_webview(webview)
+        _start_webview(webview, boot=boot)
     except Exception as exc:
         stopping.set()
         detail = str(exc).lower()

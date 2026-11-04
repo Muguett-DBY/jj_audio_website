@@ -42,6 +42,15 @@ describe("App routing (I-601)", () => {
     expect(app).toContain("skip-link");
   });
 
+  it("opens the shell without a Loading gate", () => {
+    const app = readSource("src/App.tsx");
+    expect(app).not.toContain("Loading…");
+    expect(app).toContain("app-shell");
+    const html = readSource("index.html");
+    expect(html).toContain('translate="no"');
+    expect(html).toContain('name="google" content="notranslate"');
+  });
+
   it("LoginPage requires unchecked Terms/Privacy consent", () => {
     const login = readSource("src/pages/LoginPage.tsx");
     expect(login).toContain("acceptTerms");

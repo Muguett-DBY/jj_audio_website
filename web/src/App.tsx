@@ -20,15 +20,7 @@ function Shell() {
     }
   };
 
-  if (loading) {
-    return (
-      <main>
-        <p>Loading…</p>
-      </main>
-    );
-  }
-
-  if (sessionError) {
+  if (!loading && sessionError) {
     return (
       <main>
         <p className="error">{sessionError}</p>
