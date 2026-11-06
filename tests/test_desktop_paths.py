@@ -59,11 +59,20 @@ def test_run_demucs_subprocess_when_not_frozen(monkeypatch):
         assert env["OMP_NUM_THREADS"] == env["TORCH_NUM_THREADS"]
 
     assert len(seen) == 1
-    assert "-m" in seen[0] and "demucs" in seen[0]
+    assert seen[0][:3] == [sys.executable, "-m", "audio_to_tab.demucs_bootstrap"]
     assert "htdemucs_6s" in seen[0]
 
 
-def test_run_demucs_inprocess_when_frozen(monkeypatch):
+@pytest.fixture
+def demucs_writers(monkeypatch):
+    import demucs.audio
+    import demucs.separate
+
+    monkeypatch.setattr(demucs.audio, "save_audio", demucs.audio.save_audio)
+    monkeypatch.setattr(demucs.separate, "save_audio", demucs.separate.save_audio)
+
+
+def test_run_demucs_inprocess_when_frozen(monkeypatch, demucs_writers):
     monkeypatch.setattr(sys, "frozen", True, raising=False)
     called: list[list[str]] = []
 
@@ -78,7 +87,7 @@ def test_run_demucs_inprocess_when_frozen(monkeypatch):
     assert called == [["-n", "htdemucs_6s", "-d", "cpu", "song.wav"]]
 
 
-def test_run_demucs_frozen_nonzero_exit(monkeypatch):
+def test_run_demucs_frozen_nonzero_exit(monkeypatch, demucs_writers):
     monkeypatch.setattr(sys, "frozen", True, raising=False)
 
     def boom(opts=None):
