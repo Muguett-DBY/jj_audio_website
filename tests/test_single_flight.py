@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import asyncio
-from concurrent.futures import CancelledError
+import inspect
+from types import SimpleNamespace
 from unittest.mock import Mock
 
 import pytest
@@ -45,16 +46,9 @@ def tab_job_upload(single_flight_client):
     return headers, {"upload_id": upload.json()["upload_id"], "max_duration_sec": 15}
 
 
-@pytest.mark.parametrize(
-    ("enqueue_error", "request_error"),
-    [
-        (RuntimeError, RuntimeError),
-        (FileNotFoundError, FileNotFoundError),
-        (asyncio.CancelledError, CancelledError),
-    ],
-)
+@pytest.mark.parametrize("enqueue_error", [RuntimeError, FileNotFoundError])
 def test_tab_enqueue_failure_releases_slot(
-    single_flight_client, tab_job_upload, monkeypatch, enqueue_error, request_error
+    single_flight_client, tab_job_upload, monkeypatch, enqueue_error
 ):
     client, main_mod, single_flight = single_flight_client
     headers, body = tab_job_upload
@@ -65,7 +59,7 @@ def test_tab_enqueue_failure_releases_slot(
         raise enqueue_error("enqueue failed")
 
     monkeypatch.setattr(main_mod, "_enqueue_or_run", failed_enqueue)
-    with pytest.raises(request_error):
+    with pytest.raises(enqueue_error, match="enqueue failed"):
         client.post("/v1/jobs", headers=headers, json=body)
 
     release.assert_called_once_with()
@@ -79,6 +73,34 @@ def test_tab_enqueue_failure_releases_slot(
     assert retried.status_code == 200, retried.text
     assert single_flight.is_busy()
     release.assert_called_once_with()
+
+
+def test_tab_enqueue_cancellation_releases_slot(
+    single_flight_client, tab_job_upload, monkeypatch
+):
+    _, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    token = headers["Authorization"].removeprefix("Bearer ")
+    user = SimpleNamespace(id=main_mod.decode_token(token, "access")["sub"])
+    release = Mock(wraps=single_flight.release)
+    monkeypatch.setattr(single_flight, "release", release)
+
+    async def cancelled_enqueue(*_args, **_kwargs):
+        raise asyncio.CancelledError
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", cancelled_enqueue)
+    # Call the handler directly: HTTP middleware can translate cancellation.
+    with pytest.raises(asyncio.CancelledError):
+        asyncio.run(
+            inspect.unwrap(main_mod.create_job)(
+                request=main_mod.Request({"type": "http"}),
+                body=main_mod.JobCreateRequest(**body),
+                background_tasks=main_mod.BackgroundTasks(),
+                user=user,
+            )
+        )
+    release.assert_called_once_with()
+    assert not single_flight.is_busy()
 
 
 def test_tab_enqueue_success_holds_slot_until_runner_finishes(
