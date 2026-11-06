@@ -402,7 +402,13 @@ async def create_job(
             single_flight.release()
         raise
 
-    await _enqueue_or_run(background_tasks, "tab", job.id)
+    # The runner takes ownership of the slot only after scheduling succeeds.
+    try:
+        await _enqueue_or_run(background_tasks, "tab", job.id)
+    except BaseException:
+        if settings.single_flight_jobs:
+            single_flight.release()
+        raise
     return _job_response(job, user.id)
 
 

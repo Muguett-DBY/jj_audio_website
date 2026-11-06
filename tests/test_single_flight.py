@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+import asyncio
+import inspect
+from types import SimpleNamespace
+from unittest.mock import Mock
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -26,6 +31,128 @@ def single_flight_client(tmp_path, monkeypatch):
     with TestClient(main_mod.app) as client:
         yield client, main_mod, single_flight
     single_flight.release()
+
+
+@pytest.fixture()
+def tab_job_upload(single_flight_client):
+    client, _, _ = single_flight_client
+    headers = login_headers(client)
+    upload = client.post(
+        "/v1/uploads/audio",
+        headers=headers,
+        files={"file": ("mix.wav", fake_wav_bytes(), "audio/wav")},
+    )
+    assert upload.status_code == 200
+    return headers, {"upload_id": upload.json()["upload_id"], "max_duration_sec": 15}
+
+
+@pytest.mark.parametrize("enqueue_error", [RuntimeError, FileNotFoundError])
+def test_tab_enqueue_failure_releases_slot(
+    single_flight_client, tab_job_upload, monkeypatch, enqueue_error
+):
+    client, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    release = Mock(wraps=single_flight.release)
+    monkeypatch.setattr(single_flight, "release", release)
+
+    async def failed_enqueue(*_args, **_kwargs):
+        raise enqueue_error("enqueue failed")
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", failed_enqueue)
+    with pytest.raises(enqueue_error, match="enqueue failed"):
+        client.post("/v1/jobs", headers=headers, json=body)
+
+    release.assert_called_once_with()
+    assert not single_flight.is_busy()
+
+    async def noop_enqueue(*_args, **_kwargs):
+        return None
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", noop_enqueue)
+    retried = client.post("/v1/jobs", headers=headers, json=body)
+    assert retried.status_code == 200, retried.text
+    assert single_flight.is_busy()
+    release.assert_called_once_with()
+
+
+def test_tab_enqueue_cancellation_releases_slot(
+    single_flight_client, tab_job_upload, monkeypatch
+):
+    _, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    token = headers["Authorization"].removeprefix("Bearer ")
+    user = SimpleNamespace(id=main_mod.decode_token(token, "access")["sub"])
+    release = Mock(wraps=single_flight.release)
+    monkeypatch.setattr(single_flight, "release", release)
+
+    async def cancelled_enqueue(*_args, **_kwargs):
+        raise asyncio.CancelledError
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", cancelled_enqueue)
+    # Call the handler directly: HTTP middleware can translate cancellation.
+    with pytest.raises(asyncio.CancelledError):
+        asyncio.run(
+            inspect.unwrap(main_mod.create_job)(
+                request=main_mod.Request({"type": "http"}),
+                body=main_mod.JobCreateRequest(**body),
+                background_tasks=main_mod.BackgroundTasks(),
+                user=user,
+            )
+        )
+    release.assert_called_once_with()
+    assert not single_flight.is_busy()
+
+
+def test_tab_enqueue_success_holds_slot_until_runner_finishes(
+    single_flight_client, tab_job_upload, monkeypatch
+):
+    client, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    queued = []
+
+    async def noop_enqueue(_background_tasks, kind, job_id):
+        queued.append((kind, job_id))
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", noop_enqueue)
+    created = client.post("/v1/jobs", headers=headers, json=body)
+    assert created.status_code == 200, created.text
+    assert single_flight.is_busy()
+    assert len(queued) == 1
+    assert queued[0][0] == "tab"
+
+    blocked = client.post("/v1/jobs", headers=headers, json=body)
+    assert blocked.status_code == 503, blocked.text
+    assert len(queued) == 1
+    assert single_flight.is_busy()
+
+    from backend.jobs import runner
+
+    async def finished_job(*_args):
+        return None
+
+    monkeypatch.setattr(runner, "_run_job_async", finished_job)
+    asyncio.run(runner.run_job_async(main_mod.job_manager, queued[0][1]))
+    assert not single_flight.is_busy()
+
+
+def test_disabled_tab_enqueue_failure_preserves_another_held_slot(
+    single_flight_client, tab_job_upload, monkeypatch
+):
+    client, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    monkeypatch.setattr(main_mod.settings, "single_flight_jobs", False)
+    assert single_flight.try_acquire()
+    release = Mock(wraps=single_flight.release)
+    monkeypatch.setattr(single_flight, "release", release)
+
+    async def failed_enqueue(*_args, **_kwargs):
+        raise RuntimeError("enqueue failed")
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", failed_enqueue)
+    with pytest.raises(RuntimeError, match="enqueue failed"):
+        client.post("/v1/jobs", headers=headers, json=body)
+    release.assert_not_called()
+    assert single_flight.is_busy()
 
 
 def test_isolate_job_create_succeeds_while_runner_slot_held(single_flight_client, monkeypatch):
