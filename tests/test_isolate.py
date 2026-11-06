@@ -416,7 +416,7 @@ def test_separate_stems_collects_wavs(tmp_path: Path):
     def fake_run(cmd, capture_output=True, text=True, **_kwargs):
         # Demucs output layout: -o <dir> → <dir>/<model>/<track>/*.wav
         seen_cmd.append(list(cmd))
-        assert "-m" in cmd and "demucs" in cmd
+        assert cmd[1:3] == ["-m", "audio_to_tab.demucs_bootstrap"]
         assert "-n" in cmd and "htdemucs_6s" in cmd
         out_flag = cmd.index("-o")
         demucs_out = Path(cmd[out_flag + 1])

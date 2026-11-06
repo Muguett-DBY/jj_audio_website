@@ -4,15 +4,20 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_argv_keeps_audio_and_video_and_declines_midi(tmp_path: Path):
+@pytest.mark.parametrize(
+    "clip_name", ["clip.MP4", "clip with space.MP4", "节奏.MP4", "take%20#1.MP4"]
+)
+def test_argv_keeps_audio_and_video_and_declines_midi(tmp_path: Path, clip_name: str):
     from ui.opened_audio import paths_from_argv
 
     song = tmp_path / "Song.wav"
     song.write_bytes(b"audio")
-    clip = tmp_path / "clip.MP4"
+    clip = tmp_path / clip_name
     clip.write_bytes(b"video")
     midi = tmp_path / "chart.mid"
     midi.write_bytes(b"MThd")
@@ -23,7 +28,7 @@ def test_argv_keeps_audio_and_video_and_declines_midi(tmp_path: Path):
             "AudioTools",
             "-psn_0_12345",
             str(song),
-            f"file://{clip}",
+            clip.as_uri(),
             str(midi),
             str(missing),
             str(song),

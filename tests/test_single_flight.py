@@ -75,6 +75,62 @@ def test_tab_enqueue_failure_releases_slot(
     release.assert_called_once_with()
 
 
+@pytest.mark.parametrize("slot_held", [False, True])
+def test_unsupported_tab_model_has_no_job_or_slot_side_effects(
+    single_flight_client, tab_job_upload, monkeypatch, slot_held
+):
+    client, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    if slot_held:
+        assert single_flight.try_acquire()
+    acquire = Mock(wraps=single_flight.acquire_or_503)
+    release = Mock(wraps=single_flight.release)
+    create = Mock(wraps=main_mod.job_manager.create_job)
+    enqueue = Mock()
+    monkeypatch.setattr(single_flight, "acquire_or_503", acquire)
+    monkeypatch.setattr(single_flight, "release", release)
+    monkeypatch.setattr(main_mod.job_manager, "create_job", create)
+
+    async def noop_enqueue(*args):
+        enqueue(*args)
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", noop_enqueue)
+    rejected = client.post(
+        "/v1/jobs", headers=headers, json={**body, "model": "not-a-model"}
+    )
+    assert rejected.status_code == 400, rejected.text
+    assert rejected.json()["detail"] == (
+        f"Unsupported model. Choose from: {', '.join(main_mod.SUPPORTED_MODELS)}"
+    )
+    create.assert_not_called()
+    enqueue.assert_not_called()
+    acquire.assert_not_called()
+    release.assert_not_called()
+    assert single_flight.is_busy() is slot_held
+
+
+@pytest.mark.parametrize("model", ["htdemucs_6s", "guitar_scnet"])
+def test_supported_tab_model_is_stored_and_scheduled(
+    single_flight_client, tab_job_upload, monkeypatch, model
+):
+    client, main_mod, single_flight = single_flight_client
+    headers, body = tab_job_upload
+    queued = []
+
+    async def noop_enqueue(_background_tasks, kind, job_id):
+        queued.append((kind, job_id))
+
+    monkeypatch.setattr(main_mod, "_enqueue_or_run", noop_enqueue)
+    created = client.post("/v1/jobs", headers=headers, json={**body, "model": model})
+    assert created.status_code == 200, created.text
+    job_id = created.json()["id"]
+    job = main_mod.job_manager.get(job_id)
+    assert job is not None
+    assert job.isolate_model == model
+    assert queued == [("tab", job_id)]
+    assert single_flight.is_busy()
+
+
 def test_tab_enqueue_cancellation_releases_slot(
     single_flight_client, tab_job_upload, monkeypatch
 ):

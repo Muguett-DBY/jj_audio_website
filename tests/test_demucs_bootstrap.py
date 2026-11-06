@@ -7,7 +7,10 @@ stems. These tests pin the soundfile-backed writer and the subprocess bootstrap.
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from types import SimpleNamespace
+from unittest.mock import Mock
 
 import numpy as np
 import soundfile as sf
@@ -65,9 +68,62 @@ def test_run_demucs_subprocess_uses_soundfile_bootstrap(monkeypatch):
 
     monkeypatch.setattr("audio_to_tab.separate.run_process", fake_run_process)
 
-    run_demucs(["-n", "htdemucs_6s", "song.wav"])
+    def should_abort():
+        return False
+
+    run_demucs(
+        ["-n", "htdemucs_6s", "song.wav"],
+        should_abort=should_abort,
+        timeout_sec=12.5,
+    )
 
     cmd = captured["cmd"]
     assert cmd[0].endswith("python") or "python" in str(cmd[0])
     assert cmd[1:4] == ["-m", "audio_to_tab.demucs_bootstrap", "-n"]
     assert cmd[4:] == ["htdemucs_6s", "song.wav"]
+    assert captured["kwargs"]["should_abort"] is should_abort
+    assert captured["kwargs"]["timeout_sec"] == 12.5
+
+
+def test_run_demucs_frozen_installs_writer_before_main(tmp_path, monkeypatch):
+    import demucs.audio
+    import demucs.separate
+
+    unpatched_writer = Mock(side_effect=AssertionError("original writer was called"))
+    monkeypatch.setattr(demucs.audio, "save_audio", unpatched_writer)
+    monkeypatch.setattr(demucs.separate, "save_audio", unpatched_writer)
+    out = tmp_path / "stem.wav"
+    calls = []
+
+    def fake_main(opts=None):
+        calls.append(opts)
+        assert demucs.audio.save_audio is save_audio
+        assert demucs.separate.save_audio is save_audio
+        demucs.separate.save_audio(torch.zeros(2, 80), out, samplerate=8000)
+
+    monkeypatch.setattr(demucs.separate, "main", fake_main)
+    monkeypatch.setattr(sys, "frozen", True, raising=False)
+    sub_run = Mock()
+    monkeypatch.setattr("audio_to_tab.separate.run_process", sub_run)
+    args = ["-n", "htdemucs_6s", "song.wav"]
+
+    run_demucs(args)
+
+    assert calls == [args]
+    sub_run.assert_not_called()
+    unpatched_writer.assert_not_called()
+    data, sr = sf.read(out, always_2d=True)
+    assert sr == 8000
+    assert data.shape == (80, 2)
+
+
+def test_bootstrap_module_cli_help():
+    result = subprocess.run(
+        [sys.executable, "-m", "audio_to_tab.demucs_bootstrap", "--help"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert "usage:" in result.stdout
