@@ -226,6 +226,20 @@ export type ChordShape = {
   baseFret: number;
 };
 
+/** Shared SVG metrics for practice chord diagrams (desktop mixer + website). */
+export const CHORD_DIAGRAM_LAYOUT = {
+  width: 108,
+  height: 112,
+  /** Left edge of the fretboard; leaves a gutter for the base-fret label. */
+  left: 26,
+  right: 98,
+  top: 20,
+  bottom: 100,
+  /** text-anchor=end x for the base-fret number beside the first fret space. */
+  fretLabelX: 18,
+  dotRadius: 4.2,
+} as const;
+
 function parseChord(
   symbol: string
 ): { rootPc: number; quality: Quality; head: string } | null {

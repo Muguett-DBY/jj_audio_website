@@ -1366,7 +1366,7 @@ body {
 
 .chord-now {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 92px;
+  grid-template-columns: minmax(0, 1fr) 108px;
   grid-template-areas:
     "symbol diagram"
     "meta diagram";
@@ -1385,12 +1385,12 @@ body {
 
 .chord-now-diagram {
   grid-area: diagram;
-  width: 92px;
+  width: 108px;
   min-height: 100px;
 }
 
 .chord-diagram {
-  width: 92px;
+  width: 108px;
   height: 112px;
   display: block;
 }

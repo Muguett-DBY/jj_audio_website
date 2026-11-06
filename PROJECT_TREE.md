@@ -82,6 +82,7 @@ Lead/rhythm split (`src/audio_to_tab/lead_rhythm.py`) exists; it is **not** the 
 - `docker-compose.lite.yml` — single API, sqlite, local disk (no worker/Postgres/Redis/MinIO).
 - `Caddyfile` — TLS; `/v1/*` → api:8000; SPA from `/srv`.
 - `README.md` — project overview.
+- `CONTRIBUTING.md` — setup, labels (`good first issue` / `help wanted`), PR checklist for outside contributors.
 - `AGENTS.md` — agent rules (venv, commands, what not to commit). Read with this file.
 - `PLANNING.md` — planning notes; cited by `docs/issues.md`.
 - `DESKTOP.md` — local tester / installer runbook (Isolation Home\|mix\|+, YouTube to MP3 save-to-folder, Tab PDF).

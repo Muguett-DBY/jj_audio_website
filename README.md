@@ -33,6 +33,7 @@ Python **3.11** (3.10–3.12 only). Desktop installers and the tester app: [DESK
 - [Quickstart](#quickstart)
 - [Tester](#tester)
 - [Build installers (0.1.5)](#build-installers-015)
+- [Contributing](#contributing)
 
 ## Quickstart
 
@@ -165,3 +166,12 @@ make mixer-build
 ```
 
 → `~/Downloads/AudioTools-0.1.5-macos-x64-intel.pkg`
+
+---
+
+## Contributing
+
+PRs welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+
+- [Good first issues](https://github.com/notjj1234/jj_audio_website/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- [Help wanted](https://github.com/notjj1234/jj_audio_website/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)

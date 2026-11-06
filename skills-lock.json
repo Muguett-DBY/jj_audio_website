@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "60a9cbe5af176150582c019e16e5d3703a41bb02d88438e881349876120d7944"
+    },
+    "browser-uat-analyst": {
+      "source": "microsoft/cat-agent-skills",
+      "sourceType": "github",
+      "skillPath": "submissions/browser-uat-analyst/SKILL.md",
+      "computedHash": "0aee56d7ea3372f6490798c42545c5f12fa4aaa621c2784c58655fec8cc83b99"
+    },
+    "github-issue-writer": {
+      "source": "tomlord1122/tomtom-skill",
+      "sourceType": "github",
+      "skillPath": "skills/github-issue-writer/SKILL.md",
+      "computedHash": "9c3a5c6213b5e2c81194c103825f8b3691fc20f5ce44c741d0161dc0a7c324de"
+    }
+  }
+}

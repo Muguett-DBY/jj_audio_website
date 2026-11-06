@@ -5,7 +5,9 @@ import {
   capoDiagramSymbol,
   capoLabel,
   chartTimeSeconds,
+  CHORD_DIAGRAM_LAYOUT,
   chordDifficulty,
+  chordShape,
   displaySymbol,
   formatBassTab,
   formatChordSymbol,
@@ -20,6 +22,19 @@ import {
 const samples = ["Am", "G", "F#m", "Bb", "Cmaj7", "Am/G", "N", "nope", "   "];
 
 describe("website chord helpers match the desktop sheet", () => {
+  it("draws G# as an E-shape barre at fret 4 with room for the fret label", () => {
+    const shape = chordShape("G#");
+    expect(shape).toEqual({ frets: [4, 6, 6, 5, 4, 4], baseFret: 4 });
+    expect(desktop.chordShape("G#")).toEqual(shape);
+
+    const layout = CHORD_DIAGRAM_LAYOUT;
+    expect(desktop.CHORD_DIAGRAM_LAYOUT).toEqual(layout);
+    // text-anchor=end: label's right edge is fretLabelX; leftmost barre dot
+    // sits on string 0 at x=left with radius dotRadius.
+    const clearance = layout.left - layout.dotRadius - layout.fretLabelX;
+    expect(clearance).toBeGreaterThanOrEqual(3);
+  });
+
   it("labels capo 0 as No capo and does not transpose the diagram", () => {
     expect(capoLabel(0)).toBe("No capo");
     expect(capoLabel(0)).toBe(desktop.capoLabel(0));

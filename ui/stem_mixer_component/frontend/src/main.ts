@@ -49,6 +49,7 @@ import {
   capoDiagramSymbol,
   chartTimeSeconds,
   chordAt,
+  CHORD_DIAGRAM_LAYOUT,
   chordShape,
   displaySymbol,
   outputLatencyMs,
@@ -2713,12 +2714,8 @@ function updatePracticeHeader(): void {
 function chordDiagramSvg(symbol: string): string {
   const shape = chordShape(symbol);
   if (!shape) return `<div class="chord-no-shape">${escapeHtml(formatChordSymbol(symbol))}</div>`;
-  const width = 92;
-  const height = 112;
-  const left = 10;
-  const right = width - 10;
-  const top = 20;
-  const bottom = height - 12;
+  const { width, height, left, right, top, bottom, fretLabelX, dotRadius } =
+    CHORD_DIAGRAM_LAYOUT;
   const stringGap = (right - left) / 5;
   const fretGap = (bottom - top) / 4;
   const parts: string[] = [];
@@ -2733,7 +2730,7 @@ function chordDiagramSvg(symbol: string): string {
     );
   } else {
     parts.push(
-      `<text x="${left - 5}" y="${top + fretGap * 0.7}" text-anchor="end" class="chord-fret-label">${shape.baseFret}</text>`
+      `<text x="${fretLabelX}" y="${top + fretGap * 0.7}" text-anchor="end" class="chord-fret-label">${shape.baseFret}</text>`
     );
   }
   for (let i = 0; i < 6; i++) {
@@ -2763,7 +2760,7 @@ function chordDiagramSvg(symbol: string): string {
       if (relative >= 0 && relative < 4) {
         const y = top + relative * fretGap + fretGap / 2;
         parts.push(
-          `<circle cx="${x}" cy="${y}" r="4.2" class="chord-dot" />`
+          `<circle cx="${x}" cy="${y}" r="${dotRadius}" class="chord-dot" />`
         );
       }
     }

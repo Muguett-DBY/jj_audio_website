@@ -3,6 +3,7 @@ import {
   advanceChordIndex,
   capoDiagramSymbol,
   capoLabel,
+  CHORD_DIAGRAM_LAYOUT,
   chordShape,
   displaySymbol,
   formatChordSymbol,
@@ -50,12 +51,8 @@ function Diagram({ symbol }: { symbol: string }) {
       </div>
     );
   }
-  const width = 92;
-  const height = 112;
-  const left = 10;
-  const right = width - 10;
-  const top = 20;
-  const bottom = height - 12;
+  const { width, height, left, right, top, bottom, fretLabelX, dotRadius } =
+    CHORD_DIAGRAM_LAYOUT;
   const stringGap = (right - left) / 5;
   const fretGap = (bottom - top) / 4;
   return (
@@ -69,7 +66,7 @@ function Diagram({ symbol }: { symbol: string }) {
       {shape.baseFret <= 1 ? (
         <rect x={left - 2} y={top - 3} width={right - left + 4} height={3} rx={1} className="chord-nut" />
       ) : (
-        <text x={left - 5} y={top + fretGap * 0.7} textAnchor="end" className="chord-fret-label">
+        <text x={fretLabelX} y={top + fretGap * 0.7} textAnchor="end" className="chord-fret-label">
           {shape.baseFret}
         </text>
       )}
@@ -100,7 +97,7 @@ function Diagram({ symbol }: { symbol: string }) {
             key={index}
             cx={x}
             cy={top + relative * fretGap + fretGap / 2}
-            r={4.2}
+            r={dotRadius}
             className="chord-dot"
           />
         );
