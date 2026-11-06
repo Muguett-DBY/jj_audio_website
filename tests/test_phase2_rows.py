@@ -210,7 +210,7 @@ def test_file_url_video_is_accepted_and_midi_is_declined(tmp_path: Path):
     clip.write_bytes(b"video")
     midi = tmp_path / "chart.mid"
     midi.write_bytes(b"MThd")
-    accepted, declined = paths_from_argv(["AudioTools", f"file://{clip}", str(song), str(midi)])
+    accepted, declined = paths_from_argv(["AudioTools", clip.as_uri(), str(song), str(midi)])
     assert accepted == [clip, song]
     assert declined == [midi]
 
