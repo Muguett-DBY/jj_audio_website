@@ -48,6 +48,19 @@ jobs:
             pyproject.toml
             requirements.txt
 
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      # The Python mixer test transpiles the iframe's TypeScript helpers.
+      - name: Install locked mixer dependencies
+        run: npm ci --prefix ui/stem_mixer_component/frontend
+
+      - name: Install locked web dependencies
+        if: runner.os != 'macOS'
+        run: npm ci --prefix web
+
       - name: Install CPU torch + app + dev deps
         run: |
           python -m pip install -U pip
