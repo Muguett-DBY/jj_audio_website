@@ -12,10 +12,11 @@ log = logging.getLogger("prewarm")
 def main() -> int:
     try:
         from basic_pitch.inference import Model
-        from basic_pitch import ICASSP_2022_MODEL_PATH
+
+        from audio_to_tab.transcribe import basic_pitch_model_path
 
         log.info("Warming Basic Pitch…")
-        Model(ICASSP_2022_MODEL_PATH)
+        Model(basic_pitch_model_path())
         log.info("Basic Pitch ready")
     except Exception as exc:
         log.warning("Basic Pitch prewarm skipped: %s", exc)

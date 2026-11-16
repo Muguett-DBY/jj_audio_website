@@ -148,6 +148,24 @@ def test_transcribe_does_not_import_basic_pitch_at_module_level():
             _sys.modules[key] = mod
 
 
+def test_basic_pitch_model_path_prefers_onnx_when_present(tmp_path, monkeypatch):
+    """CoreML default can yield empty MIDI on solo_melody; package pins [onnx]."""
+    from audio_to_tab.transcribe import basic_pitch_model_path
+
+    fake_default = tmp_path / "nmp.mlpackage"
+    fake_default.mkdir()
+    onnx = tmp_path / "nmp.onnx"
+    onnx.write_bytes(b"onnx")
+    monkeypatch.setattr(
+        "audio_to_tab.transcribe._icassp_default_model_path",
+        lambda: str(fake_default),
+    )
+    assert basic_pitch_model_path() == str(onnx)
+
+    onnx.unlink()
+    assert basic_pitch_model_path() == str(fake_default)
+
+
 def test_app_py_has_no_emoji_page_icon():
     from pathlib import Path
 
@@ -421,6 +439,7 @@ def test_server_skips_pages_directory_nav_before_streamlit_starts(monkeypatch):
     previous = PagesManager.uses_pages_directory
     PagesManager.uses_pages_directory = None
     seen: dict[str, object] = {}
+    argv_before = list(sys.argv)
 
     def fake_main() -> int:
         seen["flag"] = PagesManager.uses_pages_directory
@@ -429,12 +448,16 @@ def test_server_skips_pages_directory_nav_before_streamlit_starts(monkeypatch):
     import streamlit.web.cli as stcli
 
     monkeypatch.setattr(stcli, "main", fake_main)
+    # Empty list is fine for stcli.main under test, but must not leak into later
+    # imports of ui.app (Streamlit indexes sys.argv[0] on first element write).
     monkeypatch.setattr(launcher, "_streamlit_server_argv", lambda workdir, port: [])
     try:
         assert launcher.run_streamlit_server(Path("."), 8501) == 0
     finally:
         PagesManager.uses_pages_directory = previous
+        sys.argv = argv_before
     assert seen["flag"] is False
+    assert sys.argv, "run_streamlit_server must not leave sys.argv empty"
 
 
 def test_native_window_creates_with_url_after_health(tmp_path, monkeypatch):

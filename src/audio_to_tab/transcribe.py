@@ -10,6 +10,21 @@ from audio_to_tab.ingest import normalize_audio
 from audio_to_tab.midi_cleanup import CleanupConfig, cleanup_midi, merge_instruments_to_one
 
 
+def _icassp_default_model_path() -> str:
+    from basic_pitch import ICASSP_2022_MODEL_PATH
+
+    return str(ICASSP_2022_MODEL_PATH)
+
+
+def basic_pitch_model_path() -> str:
+    """Prefer ONNX when present (``basic-pitch[onnx]``); CoreML default can miss notes."""
+    default = Path(_icassp_default_model_path())
+    onnx = default.with_name("nmp.onnx")
+    if onnx.is_file():
+        return str(onnx)
+    return str(default)
+
+
 def transcribe_audio(
     audio_path: str | Path,
     output_midi_path: str | Path,
@@ -21,7 +36,6 @@ def transcribe_audio(
     normalize: bool = True,
 ) -> Path:
     """Run Basic Pitch on audio and write cleaned MIDI."""
-    from basic_pitch import ICASSP_2022_MODEL_PATH
     from basic_pitch.inference import predict
 
     audio_path = Path(audio_path)
@@ -33,7 +47,7 @@ def transcribe_audio(
     with tempfile.TemporaryDirectory() as tmp:
         _, midi_data, _ = predict(
             str(work_audio),
-            model_or_model_path=ICASSP_2022_MODEL_PATH,
+            model_or_model_path=basic_pitch_model_path(),
             onset_threshold=onset_threshold,
             frame_threshold=frame_threshold,
             minimum_note_length=minimum_note_length_ms,
