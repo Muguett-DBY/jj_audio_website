@@ -19,6 +19,23 @@ type AuthState = {
 
 const AuthContext = createContext<AuthState | null>(null);
 
+export const ANON_SESSION_UNAVAILABLE =
+  "Sign in to continue. This server is not accepting anonymous sessions.";
+
+export const API_DOWN_HINT =
+  "Could not start a session. Check that the API is running, then retry.";
+
+export function sessionFailureMessage(err: unknown): string {
+  if (err instanceof api.ApiError && err.status === 404) return ANON_SESSION_UNAVAILABLE;
+  if (err instanceof Error && err.message) return err.message;
+  return "Could not start a session.";
+}
+
+export function sessionFailureHint(message: string | null): string {
+  if (message === ANON_SESSION_UNAVAILABLE) return ANON_SESSION_UNAVAILABLE;
+  return API_DOWN_HINT;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [email, setEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -43,9 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setEmail(res.email);
     } catch (err) {
       setEmail(null);
-      setSessionError(
-        err instanceof Error ? err.message : "Could not start a session."
-      );
+      setSessionError(sessionFailureMessage(err));
     } finally {
       setLoading(false);
     }

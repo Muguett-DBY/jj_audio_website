@@ -358,10 +358,12 @@ def test_effective_demucs_segment_clamps_htdemucs_6s_below_transformer_max():
     assert effective_demucs_segment("htdemucs_6s", 20) == 7
 
 
-def test_effective_demucs_segment_keeps_ram_target_for_four_stem_models():
-    assert effective_demucs_segment("htdemucs", 8) == 8
-    assert effective_demucs_segment("htdemucs_ft", 8) == 8
-    assert effective_demucs_segment("htdemucs", 12) == 10
+def test_effective_demucs_segment_caps_transformer_models_at_7():
+    """htdemucs and htdemucs_ft reject --segment > 7.8, same as htdemucs_6s."""
+    assert effective_demucs_segment("htdemucs", 7) == 7
+    assert effective_demucs_segment("htdemucs", 8) == 7
+    assert effective_demucs_segment("htdemucs_ft", 8) == 7
+    assert effective_demucs_segment("htdemucs", 12) == 7
 
 
 def test_effective_demucs_segment_omits_flag_when_disabled():

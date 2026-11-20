@@ -1068,6 +1068,86 @@ def test_draft_snapshot_keeps_step_and_batch_paths():
     assert session["isolate_batch_fp"] == "a.wav:1|b.wav:2"
 
 
+def test_ensure_upload_tab_focused_selects_existing_draft_on_home():
+    from ui.isolate_state import (
+        OPEN_MIX_TABS_KEY,
+        SHELL_TAB_KEY,
+        SHELL_VIEW_KEY,
+        ensure_upload_tab_focused,
+        open_new_draft_tab,
+    )
+
+    session: dict = {OPEN_MIX_TABS_KEY: [], SHELL_VIEW_KEY: "home"}
+    draft = open_new_draft_tab(session, fresh=True)
+    session[SHELL_TAB_KEY] = "home"
+    session[SHELL_VIEW_KEY] = "home"
+    focused = ensure_upload_tab_focused(session)
+    assert focused == draft
+    assert session[SHELL_TAB_KEY] == draft
+    assert session[SHELL_VIEW_KEY] == "home" or session.get("_isolate_shell_view_next") == "home"
+
+
+def test_ensure_upload_tab_focused_opens_a_draft_when_none_exists():
+    from ui.isolate_state import (
+        SHELL_TAB_KEY,
+        SHELL_VIEW_KEY,
+        ensure_upload_tab_focused,
+        is_new_draft_tab,
+    )
+
+    session: dict = {SHELL_VIEW_KEY: "home", SHELL_TAB_KEY: "home"}
+    focused = ensure_upload_tab_focused(session)
+    assert is_new_draft_tab(focused)
+    assert session[SHELL_TAB_KEY] == focused
+
+
+def test_ensure_upload_tab_focused_leaves_mix_and_current_draft_alone():
+    from ui.isolate_state import (
+        OPEN_MIX_TABS_KEY,
+        SHELL_TAB_KEY,
+        SHELL_VIEW_KEY,
+        ensure_upload_tab_focused,
+        open_new_draft_tab,
+    )
+
+    mix: dict = {SHELL_VIEW_KEY: "mix", SHELL_TAB_KEY: "/runs/waltz", OPEN_MIX_TABS_KEY: ["/runs/waltz"]}
+    assert ensure_upload_tab_focused(mix) is None
+    assert mix[SHELL_TAB_KEY] == "/runs/waltz"
+
+    session: dict = {OPEN_MIX_TABS_KEY: []}
+    draft = open_new_draft_tab(session, fresh=True)
+    session[SHELL_VIEW_KEY] = "home"
+    assert ensure_upload_tab_focused(session) == draft
+    assert session[SHELL_TAB_KEY] == draft
+
+
+def test_ensure_upload_tab_focused_keeps_audio_already_on_the_home_form():
+    from ui.isolate_state import (
+        OPEN_MIX_TABS_KEY,
+        SHELL_TAB_KEY,
+        SHELL_VIEW_KEY,
+        ensure_upload_tab_focused,
+        is_new_draft_tab,
+        open_new_draft_tab,
+    )
+
+    session: dict = {
+        OPEN_MIX_TABS_KEY: [],
+        SHELL_VIEW_KEY: "home",
+        SHELL_TAB_KEY: "home",
+    }
+    empty = open_new_draft_tab(session, fresh=True)
+    session[SHELL_TAB_KEY] = "home"
+    session[SHELL_VIEW_KEY] = "home"
+    session["carry_over_audio_path"] = "/tmp/song.wav"
+    session["carry_over_audio_name"] = "song.wav"
+    focused = ensure_upload_tab_focused(session)
+    assert is_new_draft_tab(focused)
+    assert focused != empty
+    assert session["carry_over_audio_path"] == "/tmp/song.wav"
+    assert session[SHELL_TAB_KEY] == focused
+
+
 def test_upload_fingerprint():
     f = SimpleNamespace(name="song.mp3", size=12345)
     assert upload_fingerprint(f) == "song.mp3:12345"
@@ -4192,6 +4272,11 @@ def test_light_and_dark_themes_use_the_same_two_hues():
     assert "#192542" in dark and "#f6ad49" in dark
     assert "#FFF6DC" in light and "#FFFFFF" in light
     assert "#192542" in light and "#f6ad49" in light
+    for css in (dark, light):
+        assert 'button[kind="primary"]:disabled' in css
+        assert '[data-testid="stBaseButton-primary"]:disabled' in css
+        assert "opacity: 0.45" in css
+        assert "cursor: not-allowed" in css
 
 
 def test_system_theme_follows_os(monkeypatch):

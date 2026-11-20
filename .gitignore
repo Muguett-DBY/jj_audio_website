@@ -87,3 +87,7 @@ Thumbs.db
 
 # graphify output is generated (15 MB, rewritten every run) — keep it local
 graphify-out/
+
+# Dogfood / exploratory QA scratch (screenshots, videos, report). Local only.
+# Product README shots live in docs/screenshots/ — do not put dogfood PNGs there.
+dogfood-output/

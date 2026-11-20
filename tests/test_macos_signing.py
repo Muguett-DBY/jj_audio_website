@@ -151,3 +151,4 @@ def test_postinstall_launches_app_as_console_user():
 def test_gitignore_excludes_local_build_python():
     text = (ROOT / ".gitignore").read_text(encoding="utf-8")
     assert ".build/" in text
+    assert "dogfood-output/" in text

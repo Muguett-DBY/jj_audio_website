@@ -1,6 +1,6 @@
 import { NavLink, Navigate, Outlet, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useLayoutEffect, useRef, useState } from "react";
-import { AuthProvider, useAuth } from "./auth";
+import { ANON_SESSION_UNAVAILABLE, AuthProvider, sessionFailureHint, useAuth } from "./auth";
 import { CookieBanner } from "./components/CookieBanner";
 import { SiteFooter } from "./components/SiteFooter";
 import { IsolatePage } from "./pages/IsolatePage";
@@ -29,11 +29,12 @@ function Shell() {
     }
   };
 
-  if (!loading && sessionError) {
+  if (!loading && sessionError && sessionError !== ANON_SESSION_UNAVAILABLE) {
+    const hint = sessionFailureHint(sessionError);
     return (
       <main>
         <p className="error">{sessionError}</p>
-        <p className="hint">Could not start a session. Check that the API is running, then retry.</p>
+        {hint !== sessionError && <p className="hint">{hint}</p>}
         <button type="button" onClick={() => void retrySession()}>
           Retry
         </button>
@@ -43,6 +44,9 @@ function Shell() {
 
   return (
     <div className="app-shell">
+      {sessionError === ANON_SESSION_UNAVAILABLE && (
+        <p className="error">{sessionError}</p>
+      )}
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>

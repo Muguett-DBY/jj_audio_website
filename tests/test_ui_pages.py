@@ -11,6 +11,7 @@ scope for I-098.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import pytest
@@ -39,6 +40,10 @@ def youtube_audio_page():
 
 @pytest.fixture(scope="module")
 def app_module():
+    # ui.app calls st.html at import time; Streamlit reads sys.argv[0] on the
+    # first element write when not under `streamlit run`.
+    if not sys.argv:
+        sys.argv = ["pytest"]
     import ui.app as app
 
     return app

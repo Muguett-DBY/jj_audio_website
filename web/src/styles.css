@@ -133,7 +133,7 @@ h1 {
 
 .lede {
   margin: 0 0 1.5rem;
-  color: rgba(26, 31, 28, 0.72);
+  color: var(--color-text-secondary);
   max-width: 36rem;
 }
 
@@ -154,7 +154,7 @@ h1 {
 .hint {
   font-weight: 400;
   font-size: 0.8rem;
-  color: rgba(26, 31, 28, 0.72);
+  color: var(--color-text-secondary);
 }
 
 .section-heading {
@@ -186,6 +186,18 @@ h1 {
   gap: 0.35rem;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+label.field:has(> input[type="checkbox"]),
+label.field:has(> input[type="radio"]) {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+label.field:has(> input[type="checkbox"]) > input,
+label.field:has(> input[type="radio"]) > input {
+  margin-top: 0.2rem;
 }
 
 .region-picker {

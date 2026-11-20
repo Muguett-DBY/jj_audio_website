@@ -124,6 +124,7 @@ from ui.isolate_state import (
     open_mix_shell,
     open_mix_tabs_for_session,
     open_new_draft_tab,
+    ensure_upload_tab_focused,
     draft_tab_title,
     promote_job_origin_tab,
     save_active_draft_source,
@@ -5584,8 +5585,10 @@ def main() -> None:
     _ensure_workspace_tab(
         has_artifacts=bool(st.session_state.get("isolate_artifacts"))
     )
-    # Same run paints the new tab. The strip fragment claims files that arrive later.
+    # Claim an OS open before selecting a draft, so an empty New tab is not
+    # created and then joined by the file the user actually opened.
     _consume_opened_audio()
+    ensure_upload_tab_focused(st.session_state)
     with st.container(key="isolate_sticky_chrome"):
         # The global overlay is nav-only (app.py). Job state belongs to the status
         # strip below, which stays non-blocking because the app remains usable.

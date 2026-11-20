@@ -679,14 +679,16 @@ export function IsolatePage() {
             <strong>Clip {clipLabel}</strong>
           </p>
         )}
-        <JobProgress
-          job={job}
-          onCancel={
-            job && !["succeeded", "failed", "cancelled"].includes(job.status)
-              ? () => void api.cancelJob(job.id).then(setJob)
-              : undefined
-          }
-        />
+        {job?.status !== "succeeded" && (
+          <JobProgress
+            job={job}
+            onCancel={
+              job && !["succeeded", "failed", "cancelled"].includes(job.status)
+                ? () => void api.cancelJob(job.id).then(setJob)
+                : undefined
+            }
+          />
+        )}
       </div>
 
       {job?.status === "succeeded" && (

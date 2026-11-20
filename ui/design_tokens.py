@@ -278,15 +278,15 @@ def home_flag_css() -> str:
   }}
   .att-home-lockup .mark {{
     width: 32px;
-    height: 17px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 0 0 32px;
   }}
   .att-home-lockup img {{
-    width: 16px;
-    height: 16px;
+    width: 36px;
+    height: 36px;
     display: block;
   }}
   .att-home-lockup .word {{

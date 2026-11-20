@@ -22,6 +22,12 @@ describe("App routing (I-601)", () => {
     expect(app).toContain("handleAuthClick");
   });
 
+  it("leaves the Sign in control on screen when anonymous sessions are off", () => {
+    const app = readSource("src/App.tsx");
+    expect(app).toContain("sessionError !== ANON_SESSION_UNAVAILABLE");
+    expect(app).toContain("handleAuthClick");
+  });
+
   it("LoginPage navigates to /isolate after sign-in, not /tab", () => {
     const login = readSource("src/pages/LoginPage.tsx");
     expect(login).toContain('navigate("/isolate")');

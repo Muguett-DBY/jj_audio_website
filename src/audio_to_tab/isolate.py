@@ -170,11 +170,11 @@ TWO_PASS_KEEP_FROM_SECOND = ("guitar", "piano")
 TWO_PASS_FOLD_INTO_OTHER = ("other", "vocals", "drums", "bass")
 
 # Transformer Demucs checkpoints reject --segment longer than they were trained on.
-# CLI --segment is an int; htdemucs_6s max is 7.8s so 7 is the largest valid value.
+# CLI --segment is an int; HTDemucs max is 7.8s so 7 is the largest valid value.
 DEMUCS_MAX_SEGMENT_SEC = {
     "htdemucs_6s": 7,
-    "htdemucs": 10,
-    "htdemucs_ft": 10,
+    "htdemucs": 7,
+    "htdemucs_ft": 7,
 }
 
 SUBPROCESS_TIMEOUT = 300
@@ -874,7 +874,7 @@ class IsolateConfig:
     demucs_jobs: int = 1
     # Demucs --segment length in seconds. None = model default (full-track tensors).
     # ~8s reduces peak RAM on CPU; clamped per model in effective_demucs_segment
-    # because htdemucs_6s was trained at 7.8s max. Must be int — Demucs argparse
+    # because HTDemucs was trained at 7.8s max. Must be int — Demucs argparse
     # rejects '8.0'.
     demucs_segment: int | None = 8
     # Optional Demucs --shifts / --overlap. None = QUALITY_SHIFTS / QUALITY_OVERLAP.

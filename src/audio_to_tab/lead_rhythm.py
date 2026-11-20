@@ -670,8 +670,9 @@ def extract_role_features(
     """Run Basic Pitch on mono (first + last analyze windows) and extract features."""
     thr = thresholds or LeadRhythmThresholds()
     import pretty_midi
-    from basic_pitch import ICASSP_2022_MODEL_PATH
     from basic_pitch.inference import predict
+
+    from audio_to_tab.transcribe import basic_pitch_model_path
 
     window = int(thr.analyze_window_sec * sr)
     n = len(audio_mono)
@@ -683,6 +684,7 @@ def extract_role_features(
         starts.append(max(0, n - window))
 
     feats: list[RoleFeatures] = []
+    model_path = basic_pitch_model_path()
     for start in starts:
         clip = audio_mono[start : start + window].astype(np.float32)
         if len(clip) < sr // 4:
@@ -693,7 +695,7 @@ def extract_role_features(
             sf.write(str(wav_path), stereo, sr, subtype="PCM_16")
             _, midi_data, _ = predict(
                 str(wav_path),
-                model_or_model_path=ICASSP_2022_MODEL_PATH,
+                model_or_model_path=model_path,
                 onset_threshold=0.5,
                 frame_threshold=0.3,
                 minimum_note_length=58.0,

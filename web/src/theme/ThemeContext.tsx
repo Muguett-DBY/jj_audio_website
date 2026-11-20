@@ -38,10 +38,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setHydrated(true);
   }, []);
 
-  // Persist changes
+  // Persist changes. A blocked or missing store must not take Settings down.
   useEffect(() => {
     if (!hydrated) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ presetId, mode, customTokens }));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ presetId, mode, customTokens }));
+    } catch { /* ignore */ }
   }, [presetId, mode, customTokens, hydrated]);
 
   // Apply to document.documentElement
@@ -92,8 +94,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   const resetCustomTokens = () => setCustomTokens({});
-
-  if (!hydrated) return <>{children}</>; // Prevent flash
 
   return (
     <ThemeContext.Provider value={{

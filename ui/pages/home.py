@@ -40,8 +40,8 @@ from ui.isolate_state import (
     format_source_title,
     infer_source_kind,
     load_persist_isolate_user_id,
-    open_home_shell,
     open_mix_shell,
+    open_new_draft_tab,
     recent_runs_with_owner_fallback,
     youtube_video_id,
 )
@@ -185,8 +185,8 @@ def _go(page_name: str) -> None:
 
 
 def open_new_separation() -> None:
-    """Land on Isolate's upload form, not the last open mix."""
-    open_home_shell(st.session_state)
+    """Land on Isolate's upload form, with the New draft selected."""
+    open_new_draft_tab(st.session_state, fresh=True)
     _go("isolate.py")
 
 

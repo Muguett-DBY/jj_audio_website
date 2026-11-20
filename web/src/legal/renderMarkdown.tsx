@@ -13,13 +13,18 @@ export function renderMarkdown(md: string): ReactNode[] {
       i += 1;
       continue;
     }
-    if (line.startsWith("# ")) {
-      nodes.push(<h1 key={key++}>{inline(line.slice(2))}</h1>);
+    if (line.startsWith("### ")) {
+      nodes.push(<h3 key={key++}>{inline(line.slice(4))}</h3>);
       i += 1;
       continue;
     }
     if (line.startsWith("## ")) {
       nodes.push(<h2 key={key++}>{inline(line.slice(3))}</h2>);
+      i += 1;
+      continue;
+    }
+    if (line.startsWith("# ")) {
+      nodes.push(<h1 key={key++}>{inline(line.slice(2))}</h1>);
       i += 1;
       continue;
     }

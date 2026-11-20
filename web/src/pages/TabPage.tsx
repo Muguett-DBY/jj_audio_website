@@ -70,9 +70,15 @@ export function TabPage() {
           <input
             type="file"
             accept=".mp3,.wav,.flac,.m4a,audio/*"
+            aria-describedby={error === "Choose an audio file" ? "tab-file-error" : undefined}
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
           />
         </label>
+        {error === "Choose an audio file" && (
+          <p id="tab-file-error" className="error fade-in">
+            {error}
+          </p>
+        )}
         <label className="field">
           Title
           <input
@@ -114,7 +120,9 @@ export function TabPage() {
           />
           Subtractive bass de-bleed (opt-in)
         </label>
-        {error && <p className="error fade-in">{error}</p>}
+        {error && error !== "Choose an audio file" && (
+          <p className="error fade-in">{error}</p>
+        )}
         <button type="submit" disabled={tabJobRunning} aria-busy={tabJobRunning || undefined}>
           <StableLabel
             value={busy ? "Starting…" : tabJobRunning ? "Job running…" : "Create tab job"}

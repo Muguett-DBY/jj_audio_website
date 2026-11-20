@@ -196,6 +196,9 @@ def test_home_source_has_learn_practice_and_analyse_actions():
     assert "open_practice_run(" in source
     assert "analyse_existing_run(" in source
     assert "open_new_separation(" in source
+    separation = source[source.find("def open_new_separation") : source.find("def analysis_summary")]
+    assert "open_new_draft_tab(" in separation
+    assert "open_home_shell(" not in separation
     # Page cards duplicate the sidebar; the job rail must stay empty.
     assert "_HOME_CARDS" not in source
     assert 'key="att_home"' not in source

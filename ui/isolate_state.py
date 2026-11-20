@@ -2254,6 +2254,58 @@ def focus_new_draft_tab(
     _draft_sources_map(session)[target] = snapshot_draft_source(session)
 
 
+def _live_upload_has_source(session: Mapping[str, Any]) -> bool:
+    """True when the home form already has a file, link, or batch to keep."""
+    for key in (
+        "isolate_pending_audio_path",
+        "carry_over_audio_path",
+        "isolate_pending_video_path",
+        ISOLATE_YOUTUBE_URL_KEY,
+        ISOLATE_YOUTUBE_URL_PENDING_KEY,
+    ):
+        value = session.get(key)
+        if isinstance(value, str) and value.strip():
+            return True
+    batch = session.get(ISOLATE_BATCH_PATHS_KEY)
+    return isinstance(batch, (list, tuple)) and bool(batch)
+
+
+def _adopt_live_upload_as_draft(session: MutableMapping[str, Any]) -> str:
+    """Give the current home form its own New tab without clearing the source."""
+    save_active_draft_source(session)
+    draft_id = make_new_draft_tab_id()
+    add_open_mix_tab(session, draft_id)
+    session[SHELL_TAB_KEY] = draft_id
+    session[SHELL_VIEW_NEXT_KEY] = "home"
+    session[WORKSPACE_NEXT_KEY] = "New"
+    _draft_sources_map(session)[draft_id] = snapshot_draft_source(session)
+    return draft_id
+
+
+def ensure_upload_tab_focused(session: MutableMapping[str, Any]) -> str | None:
+    """Select a New draft when the upload form is the page.
+
+    The mix shell is left alone. A home shell whose tab id is not a draft
+    keeps a file already on the form, otherwise focuses the last open draft,
+    or opens one, so the strip underlines New.
+    """
+    if str(session.get(SHELL_VIEW_KEY) or "") == "mix":
+        return None
+    current = str(session.get(SHELL_TAB_KEY) or "")
+    if is_new_draft_tab(current):
+        return current
+    if _live_upload_has_source(session):
+        return _adopt_live_upload_as_draft(session)
+    open_tabs = normalize_open_mix_tabs(
+        session.get(OPEN_MIX_TABS_KEY), require_dir=False
+    )
+    drafts = [p for p in open_tabs if is_new_draft_tab(p)]
+    if drafts:
+        focus_new_draft_tab(session, drafts[-1])
+        return drafts[-1]
+    return open_new_draft_tab(session, fresh=True)
+
+
 QUEUE_IN_FLIGHT_STATUSES = frozenset(
     {"queued", "running", "failed", "cancelled", "paused", "pausing"}
 )
@@ -4018,6 +4070,11 @@ button[kind="primary"] [data-testid="stMarkdownContainer"] p,
 [data-testid="stBaseButton-primary"] [data-testid="stMarkdownContainer"],
 [data-testid="stBaseButton-primary"] [data-testid="stMarkdownContainer"] p {
   color: """ + TYRIAN_BLUE + """ !important;
+}
+button[kind="primary"]:disabled,
+[data-testid="stBaseButton-primary"]:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
 }
 """
 

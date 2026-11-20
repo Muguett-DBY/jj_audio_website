@@ -162,6 +162,7 @@ def test_installers_register_the_same_extensions_and_not_midi():
 def test_isolate_page_claims_opens_on_first_paint_and_on_the_tab_strip():
     page = (ROOT / "ui" / "pages" / "isolate.py").read_text(encoding="utf-8")
     main = page[page.find("def main(") :]
+    assert main.find("_consume_opened_audio()") < main.find("ensure_upload_tab_focused(")
     assert main.find("_consume_opened_audio()") < main.find('key="isolate_sticky_chrome"')
     fragment = page[page.find("def _mix_tab_strip_fragment") : page.find("def _render_busy_tab_close_prompt")]
     assert "if _consume_opened_audio():" in fragment

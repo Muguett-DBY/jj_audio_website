@@ -36,13 +36,13 @@
   <img src="docs/screenshots/desktop-home.png" alt="Desktop Home" width="100%">
 </p>
 
-*Desktop Home — Learn a song, YouTube, Tab PDF, Recents, and the file library (full window).*
+*Desktop Home — Recents, Files, and Setlists (full window).*
 
 <p align="center">
   <img src="docs/screenshots/desktop-mixer.png" alt="Desktop stem mixer" width="100%">
 </p>
 
-*Audio Isolation — stem mixer with waveforms, mute/solo/level/pan, while listening to Waltz for Debby.*
+*Audio Isolation — stem mixer with waveforms, mute/solo/level/pan, while listening to Basket Case - Green Day.*
 
 <p align="center">
   <img src="docs/screenshots/desktop-mixer.gif" alt="Stem mixer playback" width="100%">
